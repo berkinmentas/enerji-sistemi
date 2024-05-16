@@ -88,6 +88,61 @@
 
                 </div>
             </div>
+            <div class="hero-cards-mobile">
+                <div class="swiper hero-cards-mobile-swiper">
+                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                            <div
+                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                <div class="hero-card-icon-box" style="background-color: #c51712">
+                                    <span><i class="fa-regular fa-clock"></i></span>
+                                </div>
+                                <div class="hero-card-text  text-center px-2">
+                                    <h4>Tam Zamanında</h4>
+                                    <div>
+                                        <span class="fw-bold">Haftanın 7 gün 24 saati </span>
+                                        <span>hizmet veriyoruz</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-sm-12 col-md-4 col-lg-4 ">
+                            <div
+                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                <div class="hero-card-icon-box" style="background-color: #c51712">
+                                    <span><i class="fa-solid fa-location-dot"></i></span>
+                                </div>
+                                <div class="hero-card-text text-center px-2">
+                                    <h4>Hemen Yanınızda</h4>
+                                    <div>
+                                        <div class="fw-bold">Uzman servis ekibimiz ile ...</div>
+                                        <div>En kısa sürede yanınızdayız.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="col-sm-12 col-md-4 col-lg-4 ">
+                            <div
+                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                <div class="hero-card-icon-box" style="background-color: #c51712">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                </div>
+                                <div class="hero-card-text text-center px-2">
+                                    <h4>Tam Zamanında</h4>
+                                    <div>
+                                        <span class="fw-bold">Haftanın 7 gün 24 saati </span>
+                                        <span>hizmet veriyoruz</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -100,6 +155,11 @@
             <strong>
                 SU ISITMA SİSTEMLERİ
             </strong>
+            <div class="fs-5 mt-4">
+                <button class="btn-primary p-2">
+                    <a href="/tum-gunes-enerji-sistemleri" class="text-decoration-none text-white">Tümünü Gör</a>
+                </button>
+            </div>
         </div>
         <!-- Slider main container -->
         <div class="">
@@ -362,6 +422,11 @@
             <strong>
                 PV PAKET SİSTEMLERİ
             </strong>
+            <div class="fs-5 mt-4">
+                <button class="btn-primary p-2">
+                    <a href="/tum-pv-paket-sistemleri" class="text-decoration-none text-white">Tümünü Gör</a>
+                </button>
+            </div>
         </div>
         <!-- Slider main container -->
         <div class="">
@@ -1193,6 +1258,7 @@
             </div>
         </div>
     </section>
+
 @endsection
 
 

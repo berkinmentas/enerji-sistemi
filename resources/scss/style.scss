@@ -1,7 +1,9 @@
 body {
 
 }
-
+.hero-cards-mobile{
+    display: none;
+}
 .header-btn {
     margin-right: 10px;
     font-size: 17px;
@@ -20,12 +22,14 @@ body {
     .navbar-search-area-social {
         color: $socialMediaIcons;
         margin-left: 10px;
+
         &:hover {
             i {
                 color: white;
             }
         }
-        i{
+
+        i {
             transition: all .3s;
         }
 
@@ -33,11 +37,13 @@ body {
 
     .navbar-search-area-search-box {
         width: 400px;
-        input{
+
+        input {
             background-color: rgba(206, 36, 27, 1);
             color: white;
             font-size: 14px;
         }
+
         input::placeholder {
             color: white;
             font-size: 14px;
@@ -74,11 +80,13 @@ body {
             background-color: rgba(206, 36, 27, 1);
             color: white;
         }
-        .navbar-search-area-search-box-icon{
+
+        .navbar-search-area-search-box-icon {
             &:active {
                 border-color: rgba(206, 36, 27, 1) !important;
                 background-color: rgba(206, 36, 27, 1) !important;
                 color: black !important;
+
                 &:focus {
                     border-color: rgba(206, 36, 27, 1);
                     box-shadow: none !important;
@@ -94,7 +102,9 @@ body {
 
             &:hover {
                 box-shadow: none !important;
-                i{color: #2f3133
+
+                i {
+                    color: #2f3133
                 }
             }
         }
@@ -267,6 +277,19 @@ header {
 
         &:hover {
             color: black;
+        }
+
+        transition: all .3s;
+    }
+}
+
+.products-card-body-button {
+    a {
+        color: white;
+        font-size: 20px;
+
+        &:hover {
+            color: #a5a5a5;
         }
 
         transition: all .3s;
@@ -598,7 +621,201 @@ header {
     }
 }
 
+.top-banner {
+    background-color: $footerColor;
+    font-size: 18px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+
+    .home-link {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: $primary;
+        }
+
+        transition: all .3s;
+    }
+
+    .home-active-page {
+        color: $primary;
+    }
+
+
+}
+
+.about-us {
+    .about-us-policy {
+        color: $primary !important;
+    }
+
+    .about-us-image {
+        width: 100%;
+    }
+}
+
+.contact-us {
+    .contact-form-message {
+        textarea {
+            min-height: 150px;
+            max-height: 200px;
+        }
+    }
+
+    .location {
+        margin-bottom: 20px;
+    }
+
+    .location-title {
+        font-size: 18px;
+    }
+
+    .form-control {
+        &:focus {
+            box-shadow: none !important;
+            border-color: black;
+        }
+    }
+
+}
+
+.vision-and-mission {
+    .vision-mission-img {
+        img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    }
+
+    .vision-mission-text {
+        margin-top: 50px
+    }
+}
+
+.navbar-mobile-button {
+    i {
+        font-size: 24px;
+    }
+
+    display: none;
+}
+
+.navbar-mobile-modal {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    z-index: 999;
+    height: 100vh;
+    transition: all 1.5s;
+
+    .navbar-mobile-modal-content {
+        margin-right: -175px;
+        overflow: hidden;
+        transition: all 1.5s;
+    }
+
+    .navbar-mobile-modal-close-btn {
+        i {
+            font-size: 20px;
+        }
+    }
+
+    .navbar-mobile-modal-menu {
+        margin-top: 30px;
+        align-items: end;
+        justify-content: center;
+        font-size: 23px;
+
+        .header-btn {
+            font-size: 23px;
+        }
+
+        .nav-item {
+            &.accordion-item {
+                color: black !important;
+                border-bottom: 0;
+                text-align: end;
+                display: inline-block;
+
+                h2 {
+                    display: inline-block;
+
+                    button {
+                        padding: 0;
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+
+            .accordion-button {
+                background-color: white;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                .accordion-down-btn {
+                    font-size: 13px;
+                    margin-left: 5px;
+                }
+
+                &:not(.collapsed) {
+                    color: black !important;
+                }
+
+            }
+
+
+        }
+
+    }
+
+    .navbar-mobile-modal-logo {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 250px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &.show {
+        width: 400px;
+
+        .navbar-mobile-modal-content {
+            display: block;
+            margin-right: 0;
+        }
+
+    }
+
+    .accordion-body-text {
+        text-decoration: none;
+        font-size: 15px;
+        color: #2d3748;
+    }
+
+}
+
+// Ekran Boyutları
+
+
 @media (max-width: 991.98px) {
+    .navbar-mobile-button {
+        display: block;
+    }
     .hero-card {
         &.hero-card-mid {
 
@@ -619,11 +836,46 @@ header {
     .comment-member-description {
         padding: 0 50px !important;
     }
-    .homepage-tab-menu-product-img{
+    .homepage-tab-menu-product-img {
         height: 300px !important;
         margin-bottom: 0 !important;
-        img{
+
+        img {
             object-fit: cover !important;
+        }
+    }
+    .contact-us {
+        .location {
+            margin-top: 20px;
+        }
+
+        .contact-us-form-title {
+            margin-top: 20px;
+        }
+        .contact-us-form{
+            padding: 0 !important;
+        }
+    }
+    .vision-and-mission {
+        .mission-title {
+            margin-top: 40px
+        }
+    }
+    .hero-cards{
+        display: none;
+
+    }
+    .hero-cards-mobile{
+        display: block;
+        margin-top: -100px;
+        .hero-card-text{
+            min-height: 250px;
+        }
+        .hero-card-icon-box{
+            margin-top: 0;
+            z-index: 99;
+            position: absolute;
+            top: 0;
         }
     }
 }
@@ -696,6 +948,38 @@ header {
 
         .footer-description {
             margin-top: 20px;
+        }
+    }
+}
+
+@media (min-width: 991.98px) {
+    .dropdown {
+        &:hover {
+            .dropdown-menu {
+                display: block;
+                opacity: 1;
+                margin-top: 0;
+            }
+        }
+
+        .dropdown-menu {
+            transition: all .3s;
+            opacity: 0;
+            display: block;
+
+            .dropdown-item {
+                &:active {
+                    border: none;
+                    background-color: white !important;
+                    color: black !important;
+
+                    &:focus {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                }
+
+            }
         }
     }
 }
