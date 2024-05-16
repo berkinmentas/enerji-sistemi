@@ -7,7 +7,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/scss/app.scss',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/admin/scss/app.scss',
+                'resources/admin/js/app.js'
             ],
             refresh: true,
         }),
@@ -20,6 +22,8 @@ export default defineConfig({
             'lightbox': path.resolve(__dirname, 'node_modules/lightbox'),
             'jquery': path.resolve(__dirname, 'node_modules/jquery'),
             'magnificPopup': path.resolve(__dirname, 'node_modules/magnific-popup'),
+            'sweetalert2': path.resolve(__dirname, 'node_modules/sweetalert2'),
+            'datatables': path.resolve(__dirname, 'node_modules/datatables.net-bs5')
         }
     },
 });
