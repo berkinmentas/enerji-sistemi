@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Page;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+      $pages =  Page::query()->get();
+      $pageHakkimizda =  Page::query()->where('id', 1)->first();
+
+      view()->share([
+          'pages' => $pages
+      ]);
     }
 }

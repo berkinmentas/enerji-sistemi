@@ -5,14 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Product extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\File;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+class Product extends Model implements HasMedia
 {
-    use HasFactory, softDeletes;
+    use HasFactory, softDeletes, InteractsWithMedia;
 
     protected $fillable = [
         'product_category_id',
         'name',
+        'sub_name',
         'description',
         'hot_water_capacity',
         'cold_water_capacity',
@@ -30,4 +34,26 @@ class Product extends Model
         'light_absorption',
         'surface_coating',
     ];
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('logo')
+            ->acceptsFile(function (File $file) {
+                return in_array($file->mimeType, ['image/jpeg', 'image/png']);
+            })
+            ->singleFile()
+            ->registerMediaConversions(function (Media $media) {
+                $this
+                    ->addMediaConversion('thumb')
+                    ->width(200)
+                    ->height(200)
+                    ->quality(90);
+            });
+
+        $this
+            ->addMediaCollection('document');
+
+        $this
+            ->addMediaCollection('video');
+    }
 }

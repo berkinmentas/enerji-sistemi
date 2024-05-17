@@ -41,9 +41,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         try {
+
             $product = Product::create([
                 'product_category_id' => $request->product_category_id,
                 'name' => $request->name,
+                'sub_name'=>$request->sub_name,
                 'description' => $request->description,
                 'hot_water_capacity' => $request->hot_water_capacity,
                 'cold_water_capacity' => $request->cold_water_capacity,
@@ -63,6 +65,11 @@ class ProductController extends Controller
             ]);
             if (!$product) {
                 throw new \Exception(__('Ürün Kaydedilemedi.'));
+            }
+            if ($request->has('file') && count($request->file) == 1) {
+                foreach ($request->file as $document) {
+                    handleUploadedSingleFile($product, $document, 'logo');
+                }
             }
         } catch (\Exception $exception) {
             throw ValidationException::withMessages([$exception->getMessage()]);
@@ -89,6 +96,7 @@ class ProductController extends Controller
             $product->update([
                 'product_category_id' => $request->product_category_id,
                 'name' => $request->name,
+                'sub_name' => $request->sub_name,
                 'description' => $request->description,
                 'hot_water_capacity' => $request->hot_water_capacity,
                 'cold_water_capacity' => $request->cold_water_capacity,
@@ -106,8 +114,11 @@ class ProductController extends Controller
                 'light_absorption' => $request->light_absorption,
                 'surface_coating' => $request->surface_coating,
             ]);
-
-
+            if ($request->has('file') && count($request->file) == 1) {
+                foreach ($request->file as $document) {
+                    handleUploadedSingleFile($product, $document, 'logo');
+                }
+            }
         } catch (\Exception $exception) {
             throw ValidationException::withMessages([$exception->getMessage()]);
         }
