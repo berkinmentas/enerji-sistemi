@@ -2,6 +2,11 @@ import './bootstrap.js';
 import '../scss/app.scss';
 import Swal from 'sweetalert2'
 import 'datatables.net-bs5'
+import 'tinymce/tinymce';
+import 'tinymce/skins/ui/oxide/skin.min.css';
+import 'tinymce/icons/default/icons';
+import 'tinymce/themes/silver/theme';
+import 'tinymce/models/dom/model';
 
 import.meta.glob([
     '../images/**'
@@ -9,6 +14,7 @@ import.meta.glob([
 
 window.Swal = Swal;
 import _ from "lodash";
+import tinymce from "tinymce";
 
 window.Swal.mixin({
     focusCancel: false,
@@ -95,8 +101,21 @@ $.extend(true, $.fn.dataTable.defaults, {
 window.dropzoneAddedFilesEventHandler = function () {
     document.querySelector('form button[type="submit"]').setAttribute('disabled', 'disabled');
 }
-
 window.dropzoneQueueCompleteEventHandler = function () {
     document.querySelector('form button[type="submit"]').removeAttribute('disabled');
 }
+tinymce.init({
+    selector: 'textarea#description',
+    skin: false,
+    content_css: false,
+    menubar: false,
+    toolbar: "h1 h2 h3 h4 h5 bold italic blockquote | link | table | removeformat | code | media",
+});
 
+//dropzone
+window.dropzoneAddedFilesEventHandler = function () {
+    document.querySelector('form button[type="submit"]').setAttribute('disabled', 'disabled');
+}
+window.dropzoneQueueCompleteEventHandler = function () {
+    document.querySelector('form button[type="submit"]').removeAttribute('disabled');
+}

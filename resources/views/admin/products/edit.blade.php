@@ -24,6 +24,11 @@
                                        value="{{$product->name}}">
                             </div>
                             <div class="mb-3">
+                                <label for="sub_name">{{ __('Ürün Alt Başlığı') }}</label>
+                                <input required type="text" class="form-control" id="sub_name" name="sub_name"
+                                       value="{{$product->sub_name}}">
+                            </div>
+                            <div class="mb-3">
                                 <label for="description">{{ __('Açıklama') }}</label>
                                 <textarea type="text" class="form-control tinyMce" id="description" name="description"
                                           style="max-height: 200px">{{$product->description}}</textarea>
@@ -103,12 +108,29 @@
                                 <input type="text" class="form-control" id="surface_coating"
                                        name="surface_coating" value="{{$product->surface_coating}}">
                             </div>
+                            <div class="mb-3">
+
+                                @include('admin.includes._dropzone-single', ['title' => 'Görsel'])
+                                @if(!empty($product->getMedia('logo')) && count($product->getMedia('logo')) > 0)
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3 col-lg-2">
+                                                <div class="gallery-image mb-3">
+                                                    <img src="{{ $product->getFirstMediaUrl('logo', 'thumb') }}"
+                                                         alt="Logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">
                                 <span class="spinner-border spinner-border-sm me-1 btn-spinner d-none" role="status"
                                       aria-hidden="true"></span>
-                                Ürün Ekle
+                                Ürünü Güncelle
                             </button>
                         </div>
                     </form>

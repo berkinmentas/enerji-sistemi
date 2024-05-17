@@ -7,4 +7,5 @@
     @yield('solarHeatings')
     @yield('productDetail')
     @yield('pvPackages')
+    @yield('pages')
 @endsection

@@ -14,14 +14,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fa-solid fa-list-check"></i>
+                <a class="nav-link" href="{{route('admin.pages.index')}}">
+                    <i class="fa-solid fa-file"></i>
                     <span>Sayfalar</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fa-solid fa-list-check"></i>
+                <a class="nav-link" href="{{route('admin.settings.edit')}}">
+                    <i class="fa-solid fa-sliders"></i>
                     <span>Ayarlar</span>
                 </a>
             </li>
