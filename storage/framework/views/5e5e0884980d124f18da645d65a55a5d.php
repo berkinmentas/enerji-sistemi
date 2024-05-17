@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
-                <h2 class="fw-bold mb-4">Proje Oluştur</h2>
+                <h2 class="fw-bold mb-4">Ürün Ekle</h2>
                 <div class="bg-white shadow">
                     <form class="form" id="productsStore" enctype="multipart/form-data">
                         <div class="p-4">
@@ -17,8 +17,12 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="name"><?php echo e(__('Ürün Adı')); ?></label>
+                                <label for="name"><?php echo e(__('Ürün Başlık')); ?></label>
                                 <input required type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="sub_name"><?php echo e(__('Ürün Alt Başlık')); ?></label>
+                                <input required type="text" class="form-control" id="sub_name" name="sub_name">
                             </div>
                             <div class="mb-3">
                                 <label for="description"><?php echo e(__('Açıklama')); ?></label>
@@ -99,8 +103,9 @@
                                 <input type="text" class="form-control" id="surface_coating"
                                        name="surface_coating">
                             </div>
-
-
+                            <div class="mb-3">
+                                <?php echo $__env->make('admin.includes._dropzone-single', ['title' => 'Görsel'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                            </div>
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">

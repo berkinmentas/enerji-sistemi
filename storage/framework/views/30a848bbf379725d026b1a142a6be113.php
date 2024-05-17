@@ -23,6 +23,11 @@
                                        value="<?php echo e($product->name); ?>">
                             </div>
                             <div class="mb-3">
+                                <label for="sub_name"><?php echo e(__('Ürün Alt Başlığı')); ?></label>
+                                <input required type="text" class="form-control" id="sub_name" name="sub_name"
+                                       value="<?php echo e($product->sub_name); ?>">
+                            </div>
+                            <div class="mb-3">
                                 <label for="description"><?php echo e(__('Açıklama')); ?></label>
                                 <textarea type="text" class="form-control tinyMce" id="description" name="description"
                                           style="max-height: 200px"><?php echo e($product->description); ?></textarea>
@@ -102,12 +107,29 @@
                                 <input type="text" class="form-control" id="surface_coating"
                                        name="surface_coating" value="<?php echo e($product->surface_coating); ?>">
                             </div>
+                            <div class="mb-3">
+
+                                <?php echo $__env->make('admin.includes._dropzone-single', ['title' => 'Görsel'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php if(!empty($product->getMedia('logo')) && count($product->getMedia('logo')) > 0): ?>
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3 col-lg-2">
+                                                <div class="gallery-image mb-3">
+                                                    <img src="<?php echo e($product->getFirstMediaUrl('logo', 'thumb')); ?>"
+                                                         alt="Logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">
                                 <span class="spinner-border spinner-border-sm me-1 btn-spinner d-none" role="status"
                                       aria-hidden="true"></span>
-                                Ürün Ekle
+                                Ürünü Güncelle
                             </button>
                         </div>
                     </form>

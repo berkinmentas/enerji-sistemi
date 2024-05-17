@@ -23,7 +23,8 @@ export default defineConfig({
             'jquery': path.resolve(__dirname, 'node_modules/jquery'),
             'magnificPopup': path.resolve(__dirname, 'node_modules/magnific-popup'),
             'sweetalert2': path.resolve(__dirname, 'node_modules/sweetalert2'),
-            'datatables': path.resolve(__dirname, 'node_modules/datatables.net-bs5')
+            'datatables': path.resolve(__dirname, 'node_modules/datatables.net-bs5'),
+            'tinymce': path.resolve(__dirname, 'node_modules/tinymce'),
         }
     },
 });

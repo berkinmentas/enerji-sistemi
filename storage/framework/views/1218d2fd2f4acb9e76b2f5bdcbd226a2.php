@@ -46,7 +46,6 @@
         <div class="container">
             <a class="navbar-brand" href="/"><img
                     src="<?php echo e(\Illuminate\Support\Facades\Vite::asset('resources/images/logo.png')); ?>"></a>
-            <!--<a><img src="<?php echo e(Vite::asset('resources/images/bottom-scroll-button.png')); ?>"></a> -->
             <button class="navbar-mobile-button btn">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -55,16 +54,14 @@
                     <li class="nav-item">
                         <a class="nav-link header-btn" href="/">Ana Sayfa</a>
                     </li>
-                    <li class="nav-item header-btn">
-                        <a class="nav-link" href="#">Ürünlerimiz</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
                             Ürünlerimiz
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/tum-gunes-enerji-sistemleri">Güneş Enerji Sistemleri</a></li>
+                            <li><a class="dropdown-item" href="<?php echo e(route('products.index', ['product_category_id' => 1])); ?>">Güneş Enerji Sistemleri</a>
+                            </li>
                             <li><a class="dropdown-item" href="/tum-pv-paket-sistemleri">PV Paket Sistemleri</a></li>
                         </ul>
                     </li>
@@ -76,6 +73,12 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/hakkimizda">Hakkımızda</a></li>
                             <li><a class="dropdown-item" href="/misyonumuz">Vizyon ve Misyonumuz</a></li>
+                            <?php $__currentLoopData = $pages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pageItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><a class="dropdown-item"
+                                       href="<?php echo e(route('page.show', ['slug' => $pageItem->slug])); ?>"><?php echo e($pageItem->name); ?></a>
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                         </ul>
                     </li>
                     <li class="nav-item header-btn">
@@ -99,7 +102,8 @@
                     <i class="fa-solid fa-x"></i>
                 </div>
 
-                <ul class="navbar-nav ms-auto navbar-mobile-modal-menu accordion accordion-flush" id="accordionFlushExample">
+                <ul class="navbar-nav ms-auto navbar-mobile-modal-menu accordion accordion-flush"
+                    id="accordionFlushExample">
                     <li class="nav-item">
                         <a class="nav-link header-btn" href="/">Ana Sayfa</a>
                     </li>
@@ -108,26 +112,37 @@
                     </li>
                     <li class="nav-item accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button
+                                class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                aria-expanded="false" aria-controls="flush-collapseOne">
                                 <span>Ürünlerimiz</span>
                                 <i class="fa-solid fa-angle-down accordion-down-btn"></i>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div><a class="accordion-body accordion-body-text" href="/tum-gunes-enerji-sistemleri">Güneş Enerji Sistemleri</a></div>
-                            <div><a class="accordion-body accordion-body-text" href="/tum-pv-paket-sistemleri">PV Paket Sistemleri</a></div>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div><a class="accordion-body accordion-body-text" href="/tum-gunes-enerji-sistemleri">Güneş
+                                    Enerji Sistemleri</a></div>
+                            <div><a class="accordion-body accordion-body-text" href="/tum-pv-paket-sistemleri">PV Paket
+                                    Sistemleri</a></div>
                         </div>
                     </li>
                     <li class="nav-item accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button
+                                class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                aria-expanded="false" aria-controls="flush-collapseOne">
                                 <span>Kurumsal</span>
-                              <i class="fa-solid fa-angle-down accordion-down-btn"></i>
+                                <i class="fa-solid fa-angle-down accordion-down-btn"></i>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div><a class="accordion-body accordion-body-text" href="/hakkimizda">Hakkımızda</a></div>
-                            <div><a class="accordion-body accordion-body-text" href="/misyonumuz">Vizyon ve Misyonumuz</a></div>
+                            <div><a class="accordion-body accordion-body-text" href="/misyonumuz">Vizyon ve
+                                    Misyonumuz</a></div>
                         </div>
                     </li>
                     <!--

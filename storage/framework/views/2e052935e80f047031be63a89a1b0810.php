@@ -1,12 +1,13 @@
 <?php $__env->startSection('content'); ?>
     <section class="hero-section ">
         <div class="container">
-            <div class="text-center">
-                <div class="hero-title text-center mb-1">
-                    <h1 class="mb-0">Güneş ile gelen</h1>
-                    <h1 class="mb-0">enerji</h1>
-                </div>
-                <div class="text-center mb-3 hero-dots">
+            <div class="text-center row align-items-center justify-content-center">
+                <?php if(!empty(config('settings.heroTitle'))): ?>
+                    <div class="hero-title text-center mb-1 col-md-5 col-lg-5 col-sm-12">
+                        <h1 class="mb-0"><?php echo e(config('settings.heroTitle')); ?></h1>
+                    </div>
+                <?php endif; ?>
+                <div class="text-center mb-3 hero-dots col-md-12 col-lg-12 col-sm-12">
                     <div>
                      <span class="hero-dot-item me-2">
                          <i class="fa-solid fa-circle"></i>
@@ -22,13 +23,14 @@
                      </span>
                     </div>
                 </div>
-                <div class="hero-description-wrapper text-center mb-3">
-                    <div class="hero-description">1998 yılından itibaren faaliyet gösteren Özay Güneş Enerji Sistemleri
-                        toptan ve perakende satış hizmeti vermektedir. Türkiye çapında ve Bayilerimizle ısıtma
-                        sektöründe hizmet vermeye devam ediyoruz.
+                <?php if(!empty(config('settings.heroDescription'))): ?>
+                    <div class="hero-description-wrapper text-center mb-3 col-md-12 col-lg-12 col-sm-12">
+                        <div class="hero-description"><?php echo e(config('settings.heroDescription')); ?>
+
+                        </div>
                     </div>
-                </div>
-                <button type="button" class="px-3 py-2 btn btn-primary">Hakkımızda</button>
+                <?php endif; ?>
+                <button type="button" class="mt-5 py-2 btn btn-primary col-md-1 col-lg-1 col-sm-4">Hakkımızda</button>
 
             </div>
         </div>
@@ -45,10 +47,16 @@
                                 <span><i class="fa-regular fa-clock"></i></span>
                             </div>
                             <div class="hero-card-text  text-center px-2">
-                                <h4>Tam Zamanında</h4>
+                                <?php if(!empty(config('settings.heroCardTitle1'))): ?>
+                                    <h4><?php echo e(config('settings.heroCardTitle1')); ?></h4>
+                                <?php endif; ?>
                                 <div>
-                                    <span class="fw-bold">Haftanın 7 gün 24 saati </span>
-                                    <span>hizmet veriyoruz</span>
+                                    <?php if(!empty(config('settings.heroCardBoldDescription1'))): ?>
+                                        <span class="fw-bold"><?php echo e(config('settings.heroCardBoldDescription1')); ?></span>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.heroCardBoldDescription1'))): ?>
+                                        <span><?php echo e(config('settings.heroCardDescription1')); ?></span>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -61,10 +69,16 @@
                                 <span><i class="fa-solid fa-location-dot"></i></span>
                             </div>
                             <div class="hero-card-text text-center px-2">
-                                <h4>Hemen Yanınızda</h4>
+                                <?php if(!empty(config('settings.heroCardTitle2'))): ?>
+                                    <h4><?php echo e(config('settings.heroCardTitle2')); ?></h4>
+                                <?php endif; ?>
                                 <div>
-                                    <div class="fw-bold">Uzman servis ekibimiz ile ...</div>
-                                    <div>En kısa sürede yanınızdayız.</div>
+                                    <?php if(!empty(config('settings.heroCardBoldDescription2'))): ?>
+                                        <div class="fw-bold"><?php echo e(config('settings.heroCardBoldDescription2')); ?></div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.heroCardDescription2'))): ?>
+                                        <div><?php echo e(config('settings.heroCardDescription2')); ?></div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -76,10 +90,16 @@
                                 <span><i class="fa-solid fa-phone"></i></span>
                             </div>
                             <div class="hero-card-text text-center px-2">
-                                <h4>Tam Zamanında</h4>
+                                <?php if(!empty(config('settings.heroCardTitle3'))): ?>
+                                    <h4>Tam Zamanında</h4>
+                                <?php endif; ?>
                                 <div>
-                                    <span class="fw-bold">Haftanın 7 gün 24 saati </span>
-                                    <span>hizmet veriyoruz</span>
+                                    <?php if(!empty(config('settings.heroCardBoldDescription3'))): ?>
+                                        <div class="fw-bold"><?php echo e(config('settings.heroCardBoldDescription3')); ?></div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.heroCardDescription3'))): ?>
+                                        <div><?php echo e(config('settings.heroCardDescription3')); ?></div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +110,7 @@
             <div class="hero-cards-mobile">
                 <div class="swiper hero-cards-mobile-swiper">
                     <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                        <div class="swiper-slide">
                             <div
                                 class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
                                 <div class="hero-card-icon-box" style="background-color: #c51712">
@@ -104,41 +124,41 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="col-sm-12 col-md-4 col-lg-4 ">
-                            <div
-                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
-                                <div class="hero-card-icon-box" style="background-color: #c51712">
-                                    <span><i class="fa-solid fa-location-dot"></i></span>
-                                </div>
-                                <div class="hero-card-text text-center px-2">
-                                    <h4>Hemen Yanınızda</h4>
-                                    <div>
-                                        <div class="fw-bold">Uzman servis ekibimiz ile ...</div>
-                                        <div>En kısa sürede yanınızdayız.</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                                <div
+                                    class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                    <div class="hero-card-icon-box" style="background-color: #c51712">
+                                        <span><i class="fa-solid fa-location-dot"></i></span>
+                                    </div>
+                                    <div class="hero-card-text text-center px-2">
+                                        <h4>Hemen Yanınızda</h4>
+                                        <div>
+                                            <div class="fw-bold">Uzman servis ekibimiz ile ...</div>
+                                            <div>En kısa sürede yanınızdayız.</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="col-sm-12 col-md-4 col-lg-4 ">
-                            <div
-                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
-                                <div class="hero-card-icon-box" style="background-color: #c51712">
-                                    <span><i class="fa-solid fa-phone"></i></span>
-                                </div>
-                                <div class="hero-card-text text-center px-2">
-                                    <h4>Tam Zamanında</h4>
-                                    <div>
-                                        <span class="fw-bold">Haftanın 7 gün 24 saati </span>
-                                        <span>hizmet veriyoruz</span>
+                        <div class="swiper-slide">
+                            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                                <div
+                                    class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                    <div class="hero-card-icon-box" style="background-color: #c51712">
+                                        <span><i class="fa-solid fa-phone"></i></span>
+                                    </div>
+                                    <div class="hero-card-text text-center px-2">
+                                        <h4>Tam Zamanında</h4>
+                                        <div>
+                                            <span class="fw-bold">Haftanın 7 gün 24 saati </span>
+                                            <span>hizmet veriyoruz</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -165,15 +185,20 @@
             <div class="swiper product-water-heating-swiper product-water-heating-main-swiper">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
+                    <?php $__currentLoopData = $solarProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solarProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide">
                         <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
+                            <div class="product-card-title px-3 pt-3 fw-bold">
+                                <?php echo e($solarProduct->name); ?>
+
+                            </div>
+                            <div class="product-card-title px-3 pb-3">
+                                <?php echo e($solarProduct->sub_name); ?>
+
                             </div>
                             <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
+                               <img
+                                    src="<?php echo e($solarProduct->getFirstMediaUrl('logo')); ?>"
                                     class="card-img-top lazy" alt="...">
                             </div>
                             <div
@@ -182,227 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>18 VAKUM TÜPLÜ</div>
-                                <div>STATİK GÜNEŞ ENERJİSİ</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="<?php echo e(Vite::asset('resources/images/ozay-panel.png')); ?>"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                 </div>
@@ -649,9 +454,12 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6">
-                    <strong>
-                        Biz Kimiz ?
-                    </strong>
+                    <?php if(!empty(config('settings.homePageAboutUsTitle'))): ?>
+                        <strong>
+                            <?php echo e(config('settings.homePageAboutUsTitle')); ?>
+
+                        </strong>
+                    <?php endif; ?>
                     <div class="homepage-who-we-are-dots">
                         <div>
                      <span class="hero-dot-item me-1">
@@ -668,28 +476,34 @@
                      </span>
                         </div>
                     </div>
-                    <div class="homepage-who-we-are-text text-muted mt-3">
-                        1998 yılından itibaren faaliyet gösteren Özay Güneş Enerji Sistemleri toptan ve perakende satış
-                        hizmeti vermektedir. Türkiye çapında Şube ve Bayilerimizle ısıtma sektöründe hizmet vermeye
-                        devam
-                        ediyoruz.
-                    </div>
+                    <?php if(!empty(config('settings.homePageAboutUsDescription'))): ?>
+                        <div class="homepage-who-we-are-text text-muted mt-3">
+                            <?php echo e(config('settings.homePageAboutUsDescription')); ?>
+
+                        </div>
+                    <?php endif; ?>
                     <div class="mt-4">
-                    <span class="fw-bold">
-                        Kalite
+                        <?php if(!empty(config('settings.homePageQualityPolicyTitleBlack'))): ?>
+                            <span class="fw-bold">
+                        <?php echo e(config('settings.homePageQualityPolicyTitleBlack')); ?>
+
                     </span>
-                        <span style="color: red" class="fw-bold">
-                        Politikamız
+                        <?php endif; ?>
+                        <?php if(!empty(config('settings.homePageQualityPolicyTitleRed'))): ?>
+
+                            <span style="color: red" class="fw-bold">
+                                                <?php echo e(config('settings.homePageQualityPolicyTitleRed')); ?>
+
+
                     </span>
+                        <?php endif; ?>
                     </div>
-                    <div class="homepage-who-we-are-text text-muted mt-4">
-                        Tüm çalışanlarımızın ortak katılım vev çabaları ile kalite hedefleri doğrultusunda sürekli
-                        iyileştirme çalışmaları yapmak, müşterilerimizin ihtiyaç ve beklentilerini karşılayacak kalite
-                        seviyesini eğitimli teknik elemanlar ile sağlamak. Vakum Tüplü Güneş enerjisi sistemleri
-                        sektöründe,
-                        rekabet ortamına bağlı olarak, kalitede lider olabilmek için çalışmak firmamızın temel
-                        politikasıdır.
-                    </div>
+                    <?php if(!empty(config('settings.homePageQualityPolicyDescription'))): ?>
+                        <div class="homepage-who-we-are-text text-muted mt-4">
+                            <?php echo e(config('settings.homePageQualityPolicyDescription')); ?>
+
+                        </div>
+                    <?php endif; ?>
                     <div class="mt-4">
                         <button type="button" class="px-4 py-2 btn btn-primary">İLETİŞİME GEÇ</button>
                     </div>
@@ -700,9 +514,10 @@
     <section class="homepage-consultancy mt-5 text-center d-flex justify-content-center align-items-center">
         <div>
             <div>
-                <h3 class="mb-2">
-                    Projeniz Hakkında Ücretsiz Danışmanlık
-                </h3>
+                <?php if(!empty(config('settings.homePageBannerTitle'))): ?>
+                    <h3 class="mb-2">
+                        <?php echo e(config('settings.homePageBannerTitle')); ?></h3>
+                <?php endif; ?>
                 <div class="text-center mb-3 hero-dots">
                     <div>
                      <span class="hero-dot-item me-2">
@@ -719,12 +534,13 @@
                      </span>
                     </div>
                 </div>
-                <div class="fs-6 my-4 homepage-consultancy-text text-center col-md-8 col-sm-12 col-lg-8"
-                     style="color: #9ca3af">
-                    Nasıl başlayacağınızı bilmiyorsanız doğru yerdesiniz. Özay Tubular uzmanlarımız, 15 yılı aşkın
-                    tecrübesi ile size en uygun çözümleri sunabilir. Aklınızdaki soru işaretleriniz varsa hemen bize
-                    ulaşın.
-                </div>
+                <?php if(!empty(config('settings.homePageBannerDescription'))): ?>
+                    <div class="fs-6 my-4 homepage-consultancy-text text-center col-md-8 col-sm-12 col-lg-8"
+                         style="color: #9ca3af">
+                        <?php echo e(config('settings.homePageBannerDescription')); ?>
+
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="mt-5">
                 <button type="button" class="px-3 py-2 btn  btn-primary ">UZMAN İLE GÖRÜŞ</button>
@@ -734,9 +550,11 @@
     <section class="homepage-our-services mt-5 text-center">
         <div class="container">
             <div>
-                <div>
-                    <h1>Hizmetlerimiz</h1>
-                </div>
+                <?php if(!empty(config('settings.homePageServicesTitle'))): ?>
+                    <div>
+                        <h1><?php echo e(config('settings.homePageServicesTitle')); ?></h1>
+                    </div>
+                <?php endif; ?>
                 <div class="text-center my-2 hero-dots">
                     <div>
                      <span class="hero-dot-item me-2">
@@ -753,10 +571,13 @@
                      </span>
                     </div>
                 </div>
-                <div class="homepage-our-services-text text-muted text-center fs-6 my-5 col-md-8 col-sm-12 col-lg-8">
-                    Rahatlayın! İster Endüstriyel isterseniz eviniz için, Su Isıtma ve Arıtma Sistemleri, Güneş Enerjisi
-                    Panelleri ve tüm yedek parçalar konusunda çözüm bulabildiğiniz bir alandasınız.
-                </div>
+                <?php if(!empty(config('settings.homePageServicesDescription'))): ?>
+                    <div
+                        class="homepage-our-services-text text-muted text-center fs-6 my-5 col-md-8 col-sm-12 col-lg-8">
+                        <?php echo e(config('settings.homePageServicesDescription')); ?>
+
+                    </div>
+                <?php endif; ?>
                 <div class="homepage-our-services-cards">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 col-lg-4">
@@ -764,13 +585,18 @@
                                 <div class="mb-3 homepage-our-services-icon">
                                     <i class="fa-solid fa-industry"></i>
                                 </div>
-                                <h3 class="mb-3">
-                                    Endüstriyel Enerji Sistemleri
-                                </h3>
-                                <div class="text-muted">
-                                    Sanayi tipi yüksek kapasite güneş enerjisi sistemlerimiz ile sadece işinize
-                                    odaklanın.
-                                </div>
+                                <?php if(!empty(config('settings.homePageServicesCardTitle1'))): ?>
+                                    <h3 class="mb-3">
+                                        <?php echo e(config('settings.homePageServicesCardTitle1')); ?>
+
+                                    </h3>
+                                <?php endif; ?>
+                                <?php if(!empty(config('settings.homePageServicesCardDescription1'))): ?>
+                                    <div class="text-muted">
+                                        <?php echo e(config('settings.homePageServicesCardDescription1')); ?>
+
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 col-lg-4">
@@ -778,14 +604,18 @@
                                 <div class="mb-3 homepage-our-services-icon">
                                     <i class="fa-solid fa-sun "></i>
                                 </div>
-                                <h3 class="mb-3">
-                                    Güneş Enerji Su Isıtma
-                                </h3>
-                                <div class="text-muted">
-                                    The price for household energy supply has been all but skyrocketing for the las
-                                    couple
-                                    of decades. As one of.
-                                </div>
+                                <?php if(!empty(config('settings.homePageServicesCardTitle2'))): ?>
+                                    <h3 class="mb-3">
+                                        <?php echo e(config('settings.homePageServicesCardTitle2')); ?>
+
+                                    </h3>
+                                <?php endif; ?>
+                                <?php if(!empty(config('settings.homePageServicesCardDescription2'))): ?>
+                                    <div class="text-muted">
+                                        <?php echo e(config('settings.homePageServicesCardDescription2')); ?>
+
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 col-lg-4">
@@ -793,14 +623,18 @@
                                 <div class="mb-3 homepage-our-services-icon">
                                     <i class="fa-solid fa-solar-panel"></i>
                                 </div>
-                                <h3 class="mb-3">
-                                    Güneş PV Sistemleri
-                                </h3>
-                                <div class="text-muted">
-                                    Since the days of our initial foundation in 1992, we've been focusing all of our
-                                    efforts
-                                    on making easy-to-buy, easy-to-use.
-                                </div>
+                                <?php if(!empty(config('settings.homePageServicesCardTitle3'))): ?>
+                                    <h3 class="mb-3">
+                                        <?php echo e(config('settings.homePageServicesCardTitle3')); ?>
+
+                                    </h3>
+                                <?php endif; ?>
+                                <?php if(!empty(config('settings.homePageServicesCardDescription3'))): ?>
+                                    <div class="text-muted">
+                                        <?php echo e(config('settings.homePageServicesCardDescription3')); ?>
+
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -1094,9 +928,11 @@
             <div class="row g-5 align-items-center justify-content-center">
                 <div class="col-lg-3 col-md-12 col-sm-12">
                     <div class="flex-column">
-                        <div>
-                            <h2>Hedefimiz</h2>
-                        </div>
+                        <?php if(!empty(config('settings.homePageOurGoalsTitle'))): ?>
+                            <div>
+                                <h2><?php echo e(config('settings.homePageOurGoalsTitle')); ?></h2>
+                            </div>
+                        <?php endif; ?>
                         <div>
                             <div class="mb-3 hero-dots">
                                 <div>
@@ -1115,10 +951,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-muted">
-                            Tüketicilerimize yaşam boyu kaliteli ürün, yenilikçi hizmet, güven, mutluluk, huzur ve
-                            kolaylık sağlamak. Aile ve Ülke kalkınmasına katkı sağlamak.
-                        </div>
+                        <?php if(!empty(config('settings.homePageOurGoalsDescription'))): ?>
+                            <div class="text-muted">
+                                <?php echo e(config('settings.homePageOurGoalsDescription')); ?>
+
+                            </div>
+                        <?php endif; ?>
                         <div>
                             <div class="mt-4">
                                 <button type="button" class="px-4 py-2 btn btn-primary ">İLETİŞİME GEÇ</button>
@@ -1136,14 +974,21 @@
                                     </div>
                                 </div>
                                 <div class="goal-item-text ms-4">
-                                    <div>
-                                        <h4>
-                                            Dünya'yı Koru
-                                        </h4>
-                                    </div>
-                                    <div class="text-muted">
-                                        Hepimizi ilgilendiren Dünya'nın ekolojik dengesine bugün katkı sağlayabiliriz
-                                    </div>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardTitle1'))): ?>
+                                        <div>
+                                            <h4>
+                                                <?php echo e(config('settings.homePageOurGoalsCardTitle1')); ?>
+
+                                            </h4>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardDescription1'))): ?>
+
+                                        <div class="text-muted">
+                                            <?php echo e(config('settings.homePageOurGoalsCardDescription1')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center goal-wrapper">
@@ -1153,15 +998,21 @@
                                     </div>
                                 </div>
                                 <div class="goal-item-text ms-4">
-                                    <div>
-                                        <h4>
-                                            Enerji Tasarrufu
-                                        </h4>
-                                    </div>
-                                    <div class="text-muted">
-                                        Enerjiye daha fazla ihtiyaç duyduğumuz bu çağda, temiz enerjiyle gerçek dünya'yı
-                                        koruyabilirsiniz.
-                                    </div>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardTitle2'))): ?>
+                                        <div>
+                                            <h4>
+                                                <?php echo e(config('settings.homePageOurGoalsCardTitle2')); ?>
+
+                                            </h4>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardDescription2'))): ?>
+
+                                        <div class="text-muted">
+                                            <?php echo e(config('settings.homePageOurGoalsCardDescription2')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -1173,15 +1024,21 @@
                                     </div>
                                 </div>
                                 <div class="goal-item-text ms-4">
-                                    <div>
-                                        <h4>
-                                            Doğal Denge
-                                        </h4>
-                                    </div>
-                                    <div class="text-muted">
-                                        Temiz enerji ile doğa'yı kirletmiyoruz böylece geleceğe temiz bir gelecek
-                                        bırakıyoruz.
-                                    </div>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardTitle3'))): ?>
+                                        <div>
+                                            <h4>
+                                                <?php echo e(config('settings.homePageOurGoalsCardTitle3')); ?>
+
+                                            </h4>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardDescription3'))): ?>
+
+                                        <div class="text-muted">
+                                            <?php echo e(config('settings.homePageOurGoalsCardDescription3')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center goal-wrapper">
@@ -1191,15 +1048,21 @@
                                     </div>
                                 </div>
                                 <div class="goal-item-text ms-4">
-                                    <div>
-                                        <h4>
-                                            Sürdürülebilir Enerji
-                                        </h4>
-                                    </div>
-                                    <div class="text-muted">
-                                        Fosil yakıtlar gibi kaynakları değil, güneş gibi yüksek enerji kaynaklarını
-                                        kullanıyoruz.
-                                    </div>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardTitle4'))): ?>
+                                        <div>
+                                            <h4>
+                                                <?php echo e(config('settings.homePageOurGoalsCardTitle4')); ?>
+
+                                            </h4>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if(!empty(config('settings.homePageOurGoalsCardDescription4'))): ?>
+
+                                        <div class="text-muted">
+                                            <?php echo e(config('settings.homePageOurGoalsCardDescription4')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

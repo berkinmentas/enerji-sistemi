@@ -3,7 +3,10 @@
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,6 +16,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/contacts/datatable', [ContactController::class, 'datatable'])->name('contacts.datatable');
     Route::resource('/products', ProductController::class);
     Route::post('/products/datatable', [ProductController::class, 'datatable'])->name('products.datatable');
+    Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::post('/settings/update', [SettingController::class, 'update'])->name('settings.update');
+    Route::resource('/pages', PageController::class);
+    Route::post("/pages/datatable", [PageController::class, 'datatable'])->name('pages.datatable');
+    Route::post('/media/store', [MediaController::class, 'store'])->name('media.store');
+
 });
 
 /*Route::prefix('admin')->name('admin.')->group(function () {
