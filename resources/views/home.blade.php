@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 @endif
-                <button type="button" class="mt-5 py-2 btn btn-primary col-md-1 col-lg-1 col-sm-4">Hakkımızda</button>
+                <button type="button" class="mt-5 py-2 btn btn-primary col-md-2 col-lg-2 col-sm-4">Hakkımızda</button>
 
             </div>
         </div>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="hero-card-text text-center px-2">
                                 @if(!empty(config('settings.heroCardTitle3')))
-                                    <h4>Tam Zamanında</h4>
+                                    <h4>{{config('settings.heroCardTitle3')}}</h4>
                                 @endif
                                 <div>
                                     @if(!empty(config('settings.heroCardBoldDescription3')))
@@ -110,50 +110,74 @@
             <div class="hero-cards-mobile">
                 <div class="swiper hero-cards-mobile-swiper">
                     <div class="swiper-wrapper">
+
                         <div class="swiper-slide">
-                            <div
-                                class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
-                                <div class="hero-card-icon-box" style="background-color: #c51712">
-                                    <span><i class="fa-regular fa-clock"></i></span>
-                                </div>
-                                <div class="hero-card-text  text-center px-2">
-                                    <h4>Tam Zamanında</h4>
-                                    <div>
-                                        <span class="fw-bold">Haftanın 7 gün 24 saati </span>
-                                        <span>hizmet veriyoruz</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                            <div class="col-sm-12 col-lg-12 col-md-12">
                                 <div
                                     class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
                                     <div class="hero-card-icon-box" style="background-color: #c51712">
-                                        <span><i class="fa-solid fa-location-dot"></i></span>
+                                        <span><i class="fa-regular fa-clock"></i></span>
                                     </div>
-                                    <div class="hero-card-text text-center px-2">
-                                        <h4>Hemen Yanınızda</h4>
+                                    <div class="hero-card-text  text-center px-2">
+                                        @if(!empty(config('settings.heroCardTitle1')))
+                                            <h4>{{config('settings.heroCardTitle1')}}</h4>
+                                        @endif
                                         <div>
-                                            <div class="fw-bold">Uzman servis ekibimiz ile ...</div>
-                                            <div>En kısa sürede yanınızdayız.</div>
+                                            @if(!empty(config('settings.heroCardBoldDescription1')))
+                                                <span
+                                                    class="fw-bold">{{config('settings.heroCardBoldDescription1')}}</span>
+                                            @endif
+                                            @if(!empty(config('settings.heroCardDescription1')))
+                                                <span>{{config('settings.heroCardDescription1')}}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                                <div
+                                    class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
+                                    <div class="hero-card-icon-box" style="background-color: #c51712">
+                                        <span><i class="fa-solid fa-location-dot"></i></span>
+                                    </div>
+                                    <div class="hero-card-text  text-center px-2">
+                                        @if(!empty(config('settings.heroCardTitle2')))
+                                            <h4>{{config('settings.heroCardTitle2')}}</h4>
+                                        @endif
+                                        <div>
+                                            @if(!empty(config('settings.heroCardBoldDescription2')))
+                                                <span
+                                                    class="fw-bold">{{config('settings.heroCardBoldDescription2')}}</span>
+                                            @endif
+                                            @if(!empty(config('settings.heroCardDescription2')))
+                                                <span>{{config('settings.heroCardDescription2')}}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
                                 <div
                                     class="hero-card hero-card-mobile d-flex justify-content-center align-items-center flex-column">
                                     <div class="hero-card-icon-box" style="background-color: #c51712">
                                         <span><i class="fa-solid fa-phone"></i></span>
                                     </div>
-                                    <div class="hero-card-text text-center px-2">
-                                        <h4>Tam Zamanında</h4>
+                                    <div class="hero-card-text  text-center px-2">
+                                        @if(!empty(config('settings.heroCardTitle3')))
+                                            <h4>{{config('settings.heroCardTitle3')}}</h4>
+                                        @endif
                                         <div>
-                                            <span class="fw-bold">Haftanın 7 gün 24 saati </span>
-                                            <span>hizmet veriyoruz</span>
+                                            @if(!empty(config('settings.heroCardBoldDescription3')))
+                                                <span
+                                                    class="fw-bold">{{config('settings.heroCardBoldDescription3')}}</span>
+                                            @endif
+                                            @if(!empty(config('settings.heroCardDescription3')))
+                                                <span>{{config('settings.heroCardDescription3')}}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -176,16 +200,17 @@
             </strong>
             <div class="fs-5 mt-4">
                 <button class="btn-primary p-2">
-                    <a href="/tum-gunes-enerji-sistemleri" class="text-decoration-none text-white">Tümünü Gör</a>
+                    <a href="{{route('products.index', ['product_category_id' => 1])}}"
+                       class="text-decoration-none text-white">Tümünü Gör</a>
                 </button>
             </div>
         </div>
         <!-- Slider main container -->
-        <div class="">
-            <div class="swiper product-water-heating-swiper product-water-heating-main-swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    @foreach($solarProducts as $solarProduct)
+
+        <div class="swiper product-water-heating-swiper product-water-heating-main-swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                @foreach($solarProducts as $solarProduct)
                     <div class="swiper-slide">
                         <div class="card">
                             <div class="product-card-title px-3 pt-3 fw-bold">
@@ -195,7 +220,7 @@
                                 {{$solarProduct->sub_name}}
                             </div>
                             <div class="overflow-hidden">
-                               <img
+                                <img
                                     src="{{$solarProduct->getFirstMediaUrl('logo')}}"
                                     class="card-img-top lazy" alt="...">
                             </div>
@@ -205,15 +230,13 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-
-
-                </div>
-                <div class="swiper-pagination-wrapper">
-                    <div class="swiper-pagination"></div>
-                </div>
+                @endforeach
+            </div>
+            <div class="swiper-pagination-wrapper">
+                <div class="swiper-pagination"></div>
             </div>
         </div>
+
     </section>
     <section class="water-heating-section">
         <div

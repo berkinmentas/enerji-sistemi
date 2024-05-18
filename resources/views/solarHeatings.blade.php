@@ -27,7 +27,7 @@
                                     </div>
                                     <div
                                         class="card-body products-card-body-button d-flex justify-content-end align-items-center">
-                                        <a href="#" class="text-decoration-none">İNCELE</a>
+                                        <a href="{{route('products.show', ['product_id' => $product->id])}}" class="text-decoration-none">İNCELE</a>
                                     </div>
                                 </div>
 

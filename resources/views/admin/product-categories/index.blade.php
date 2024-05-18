@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout')
-@section('title', 'Sayfalar -')
+@section('title', 'Mesajlar -')
 @section('content')
     <div class="container mt-5">
         <div class="row">
@@ -8,18 +8,19 @@
                 <div class="table-responsive bg-white rounded-2 shadow datatable-table-wrapper">
                     <div class="mb-4">
                         <div class="row d-flex justify-content-center">
-                            <h5 class="col-sm-6 col-lg-6 col-md-6 fw-bold">Sayfa Listesi</h5>
+                            <h5 class="col-sm-6 col-lg-6 col-md-6 fw-bold">Kategori Listesi</h5>
                             <div class="col-sm-6 col-lg-6 col-md-6 d-flex align-items-center justify-content-end">
-                                <a  href="{{route('admin.pages.create')}}" class="btn btn-primary">Sayfa Ekle</a>
+                                <a  href="{{route('admin.productCategories.create')}}" class="btn btn-primary">Kategori Ekle</a>
                             </div>
                         </div>
                     </div>
-                    <table class="table table-pages table-datatable w-100">
+                    <table class="table table-product-categories table-datatable table-projects w-100">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Sayfa Adı</th>
-                            <th>Sayfa Description</th>
+                            <th>İsim</th>
+                            <th>Açıklama</th>
+                            <th>Ana Sayafada Gösterim</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
@@ -29,12 +30,12 @@
                     @push('js-stack')
                         <script>
                             window.addEventListener('DOMContentLoaded', function () {
-                                let tableList = window.tableList = $('.table-pages').DataTable({
+                                let tableList = window.tableList = $('.table-product-categories').DataTable({
                                     processing: true,
                                     serverSide: true,
                                     lengthChange: false,
                                     ajax: {
-                                        url: '{{ route('admin.pages.datatable') }}',
+                                        url: '{{ route('admin.productCategories.datatable') }}',
                                         type: 'POST',
                                         data: function (d) {
                                         },
@@ -45,6 +46,7 @@
                                         {"data": "id"},
                                         {"data": "name"},
                                         {"data": "description"},
+                                        {"data": "is_home_page"},
                                         {"data": "actions"},
                                     ],
                                     columnDefs: [

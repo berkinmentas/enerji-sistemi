@@ -54,10 +54,9 @@ window.ajaxDefaultErrorCallback = function (result, returnResponse = false) {
 }
 const productWaterHeatingMainSlider = new Swiper('.product-water-heating-main-swiper', {
     loop: true,
-    autoplay: false,
+    autoplay: true,
     spaceBetween: 10,
     preloadImages: true,
-    centeredSlides: true,
     pagination: {
 
         el: '.swiper-pagination',
@@ -101,7 +100,6 @@ const productWaterHeatingPvPackageSlider = new Swiper('.product-water-heating-pv
     autoplay: true,
     spaceBetween: 10,
     preloadImages: true,
-    centeredSlides: true,
     pagination: {
 
         el: '.swiper-pagination',

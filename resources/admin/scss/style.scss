@@ -35,6 +35,61 @@ body {
     }
 }
 
+.nav-item {
+    &.accordion-item {
+        background-color: #2a2927;
+        border-color: $primary !important;
+        color: black !important;
+        border-bottom: 0;
+
+        h2 {
+            display: inline-block;
+
+            button {
+                padding: 0;
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    .accordion-button {
+        background-color: #2a2927!important;
+        color: white;
+        border: none;
+        &:focus {
+            box-shadow: none;
+        }
+
+        .accordion-down-btn {
+            font-size: 13px;
+            margin-left: 5px;
+        }
+
+        &:not(.collapsed) {
+            color: white !important;
+        }
+
+    }
+    .accordion-body-wrapper{
+        &:hover{
+            transform: scale(1.02);
+        }
+    }
+    .accordion-body-text {
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+        padding-left: 30px;
+    }
+
+
+}
+
+
 .auth {
     height: 100vh;
     width: 100%;

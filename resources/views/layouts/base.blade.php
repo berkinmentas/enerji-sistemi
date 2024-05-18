@@ -111,18 +111,18 @@
                         <a class="nav-link" href="#">Ürünlerimiz</a>
                     </li>
                     <li class="nav-item accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
+                        <h2 class="accordion-header" id="flush-headingTwo">
                             <button
                                 class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center"
-                                type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                aria-expanded="false" aria-controls="flush-collapseTwo">
                                 <span>Ürünlerimiz</span>
                                 <i class="fa-solid fa-angle-down accordion-down-btn"></i>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div><a class="accordion-body accordion-body-text" href="/tum-gunes-enerji-sistemleri">Güneş
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExampleTwo">
+                            <div><a class="accordion-body accordion-body-text" href="{{route('products.index', ['product_category_id' => 1])}}">Güneş
                                     Enerji Sistemleri</a></div>
                             <div><a class="accordion-body accordion-body-text" href="/tum-pv-paket-sistemleri">PV Paket
                                     Sistemleri</a></div>
@@ -143,19 +143,21 @@
                             <div><a class="accordion-body accordion-body-text" href="/hakkimizda">Hakkımızda</a></div>
                             <div><a class="accordion-body accordion-body-text" href="/misyonumuz">Vizyon ve
                                     Misyonumuz</a></div>
+                            @foreach($pages as $pageItem)
+                                <div><a class="accordion-body accordion-body-text" href="{{ route('page.show', ['slug' => $pageItem->slug]) }}">{{ $pageItem->name }}</a></div>
+                            @endforeach
                         </div>
                     </li>
-                    <!--
-                    <li class="nav-item accordion header-btn">
-                        <a class="nav-link accordion-header" href="#" role="button"
-                           aria-expanded="false">
-                            Kurumsal
-                        </a>
-                        <ul class="accordion-item">
-                            <li><a class="accordion-collapse collapse" href="/hakkimizda">Hakkımızda</a></li>
-                            <li><a class="accordion-collapse collapse" href="/misyonumuz">Vizyon ve Misyonumuz</a></li>
-                        </ul>
-                    </li>-->
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/hakkimizda">Hakkımızda</a></li>
+                        <li><a class="dropdown-item" href="/misyonumuz">Vizyon ve Misyonumuz</a></li>
+                        @foreach($pages as $pageItem)
+                            <li><a class="dropdown-item"
+                                   href="{{ route('page.show', ['slug' => $pageItem->slug]) }}">{{ $pageItem->name }}</a>
+                            </li>
+                        @endforeach
+
+                    </ul>
                     <li class="nav-item header-btn">
                         <a class="nav-link" href="#">Şubelerimiz</a>
                     </li>
