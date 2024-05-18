@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +23,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('/pages', PageController::class);
     Route::post("/pages/datatable", [PageController::class, 'datatable'])->name('pages.datatable');
     Route::post('/media/store', [MediaController::class, 'store'])->name('media.store');
+    Route::resource('/comments', CommentController::class);
+    Route::post('/comments/datatable', [CommentController::class, 'datatable'])->name('comments.datatable');
+    Route::resource('/productCategories', ProductCategoryController::class);
+    Route::post('/productCategories/datatable', [ProductCategoryController::class, 'datatable'])->name('productCategories.datatable');
 
 });
 
