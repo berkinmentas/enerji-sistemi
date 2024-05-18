@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Products\StoreRequest;
+use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
@@ -38,7 +40,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         try {
 
@@ -90,7 +92,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(UpdateRequest $request, Product $product)
     {
         try {
             $product->update([

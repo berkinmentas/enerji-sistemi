@@ -1,0 +1,68 @@
+ public function index(){
+        Comment::query()
+            ->get();
+        return view('admin.comments.index');
+    }
+    public function create(){
+        return view('admin.comments.create');
+    }
+    public function store(Request $request){
+
+        try{
+            $comment = Comment::create([
+                'name'=>$request->name,
+                'title'=>$request->title,
+                'comment'=>$request->comment
+            ]);
+            if(!$comment){
+                throw new \Exception(__('Yorum Kaydedilemedi.'));
+            }
+            if ($request->has('file') && count($request->file) == 1) {
+                foreach ($request->file as $document) {
+                    handleUploadedSingleFile($comment, $document, 'logo');
+                }
+            }
+        }catch (\Exception $exception){
+            throw new \Exception(ValidationException::withMessages([$exception->getMessage()]));
+        }
+
+
+
+    }
+    public function datatable(Request $request){
+        $comments = Comment::query();
+        return DataTables::eloquent($comments)
+            ->addColumn('actions', function (Comment $comment) {
+                $action = '<a class="btn btn-primary btn-sm btn-action me-3" href="' . route('admin.comments.show', ['comment' => $comment->id]) . '">Görüntüle</a>';
+                $action .= '<a  data-id="' . $comment->id . '" data-url="' . route('admin.comments.destroy', ['comment' => $comment->id]) . '" role="button" class="btn btn-danger btn-sm btn-action btn-delete me-3">Sil</a>';
+                return $action;
+            })
+            ->rawColumns(['actions'])
+            ->make();
+
+    }
+    public function edit(Comment $comment){
+
+        return view('admin.products.edit', [
+            'comment' => $comment,
+        ]);
+    }
+
+    public function update(Request $request, Comment $comment){
+
+        try{
+            $comment = Comment::update([
+                'name' => $request->name,
+                'title' => $request->title,
+                'comment'=> $request->comment
+            ]);
+            if(!$comment){
+                throw new \Exception(__('Yorum Güncellenemedi.'));
+            }
+        }catch (\Exception $exception){
+            throw new \Exception(ValidationException::withMessages([$exception->getMessage()]));
+        }
+    }
+    public function destroy(Comment $comment){
+        $comment->delete();
+    }

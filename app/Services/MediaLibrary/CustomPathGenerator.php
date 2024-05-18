@@ -20,6 +20,11 @@ class CustomPathGenerator implements BasePathGenerator
             return 'product/' . $media->model_id . '/logo/' . $media->id . '/';
         elseif ($media->model_type == 'App\Models\Product')
             return 'product/' . $media->model_id . '/' . $media->id . '/';
+        elseif ($media->model_type == 'App\Models\Comment' && $media->collection_name == 'logo')
+            return 'comment/' . $media->model_id . '/logo/' . $media->id . '/';
+        elseif ($media->model_type == 'App\Models\Comment')
+            return 'comment/' . $media->model_id . '/' . $media->id . '/';
+
         return md5($media->id . config('app.key')) . '/';
     }
 
@@ -36,6 +41,10 @@ class CustomPathGenerator implements BasePathGenerator
             return 'product/' . $media->model_id . '/' . $media->id . '/conversions/';
         elseif ($media->model_type == 'App\Models\Product')
             return 'product/' . $media->model_id . '/' . $media->id . '/conversions/';
+        elseif ($media->model_type == 'App\Models\Comment')
+            return 'comment/' . $media->model_id . '/' . $media->id . '/conversions/';
+        elseif ($media->model_type == 'App\Models\Comment')
+            return 'comment/' . $media->model_id . '/' . $media->id . '/conversions/';
         return md5($media->id . config('app.key')) . '/conversions/';
     }
 
@@ -52,6 +61,10 @@ class CustomPathGenerator implements BasePathGenerator
             return 'product/' . $media->model_id . '/' . $media->id . '/responsive-images/';
         elseif ($media->model_type == 'App\Models\Product')
             return 'product/' . $media->model_id . '/' . $media->id . '/responsive-images/';
+        elseif ($media->model_type == 'App\Models\Comment')
+            return 'comment/' . $media->model_id . '/' . $media->id . '/responsive-images/';
+        elseif ($media->model_type == 'App\Models\Comment')
+            return 'comment/' . $media->model_id . '/' . $media->id . '/responsive-images/';
 
 
         return md5($media->id . config('app.key')) . '/responsive-images/';

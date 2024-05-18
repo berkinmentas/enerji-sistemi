@@ -10,14 +10,13 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Contact extends Model  implements HasMedia
+class Comment extends Model  implements HasMedia
 {
-    use HasFactory , SoftDeletes, InteractsWithMedia;
-
+    use HasFactory, SoftDeletes, InteractsWithMedia;
     protected $fillable = [
-        'email',
-        'phone',
-        'message'
+        'name',
+        'title',
+        'comment'
     ];
     public function registerMediaCollections(): void
     {

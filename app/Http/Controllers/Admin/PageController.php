@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Pages\StoreRequest;
+use App\Http\Requests\Admin\Pages\UpdateRequest;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -38,13 +41,13 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
         try{
             $page = Page::create([
                 'name' => $request->name,
-                'slug' => $request->slug,
+                'slug' => Str::slug($request->name),
                 'description' => cleanHtmlContent($request->description),
             ]);
             if(!$page){
@@ -78,15 +81,13 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Page $page)
+    public function update(UpdateRequest $request, Page $page)
     {
         //
         try{
             $page->update([
                 'name'=>$request->name,
-                'slug'=>$request->slug,
                 'description' => cleanHtmlContent($request->description)
-
                 ]);
             if(!$page){
                 throw new \Exception(__('Sayfa Güncellenemedi.'));
