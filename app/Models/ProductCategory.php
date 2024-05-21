@@ -10,6 +10,7 @@ class ProductCategory extends Model
 {
     use HasFactory , SoftDeletes;
     protected $fillable = [
+        'parent_id',
         'name',
         'description',
         'is_home_page'

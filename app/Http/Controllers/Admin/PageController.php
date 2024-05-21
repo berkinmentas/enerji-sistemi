@@ -53,6 +53,11 @@ class PageController extends Controller
             if(!$page){
                 throw new \Exception(__('Sayfa Kaydedilemedi.'));
             }
+            if ($request->has('file') && count($request->file) == 1) {
+                foreach ($request->file as $document) {
+                    handleUploadedSingleFile($page, $document, 'logo');
+                }
+            }
         }catch (\Exception $exception){
             return ValidationException::withMessages([$exception->getMessage()]);
         }
@@ -92,10 +97,14 @@ class PageController extends Controller
             if(!$page){
                 throw new \Exception(__('Sayfa Güncellenemedi.'));
             }
+            if ($request->has('file') && count($request->file) == 1) {
+                foreach ($request->file as $document) {
+                    handleUploadedSingleFile($page, $document, 'logo');
+                }
+            }
         }catch (\Exception $exception){
             return ValidationException::withMessages([$exception->getMessage()]);
         }
-
     }
 
     /**

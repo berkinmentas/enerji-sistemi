@@ -16,11 +16,25 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.product-categories.index');
+        $productCategories = ProductCategory::query()
+        ->where('parent_id' , null)
+        ->get();
+        return view('admin.product-categories.index',
+        [
+            'productCategories' => $productCategories,
+        ]);
     }
     public function datatable(Request $request){
         $productCategories = ProductCategory::query();
         return DataTables::eloquent($productCategories)
+            ->editColumn('parent_id', function(ProductCategory $productCategory){
+                if(!is_null($productCategory->parent_id)){
+                    $parentCategory = ProductCategory::query()->where('id',$productCategory->parent_id)->first();
+                    return $parentCategory->name;
+                } else{
+                    return 'Bağlı olduğu üst kategori yok.';
+                }
+            })
             ->editColumn('is_home_page', function (ProductCategory $productCategory) {
                 return $productCategory->is_home_page == 1 ? 'Anasayfada Gösteriliyor' : 'Anasayfada Gösterilmiyor';
             })
@@ -38,7 +52,12 @@ class ProductCategoryController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(){
-        return view('admin.product-categories.create');
+        $productCategories = ProductCategory::query()
+            ->where('parent_id' , null)
+            ->get();
+        return view('admin.product-categories.create', [
+            'productCategories' => $productCategories,
+        ]);
     }
 
     /**
@@ -49,6 +68,7 @@ class ProductCategoryController extends Controller
 
         try {
             $productCategory = ProductCategory::create([
+                'parent_id' => $request->parent_id,
                 'name' => $request->name,
                 'description' => $request->description,
                 'is_home_page' => ($request->has('is_home_page'))
@@ -73,9 +93,13 @@ class ProductCategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(ProductCategory $productCategory){
+        $productParentCategories = ProductCategory::query()
+            ->where('parent_id' , null)
+            ->get();
 
         return view('admin.product-categories.edit', [
             'productCategory' => $productCategory,
+            'productParentCategories' => $productParentCategories,
         ]);
     }
 
@@ -86,10 +110,10 @@ class ProductCategoryController extends Controller
 
         try{
             $productCategory->update([
+                'parent_id' => $request->parent_id,
                 'name' => $request->name,
                 'description' => $request->description,
                 'is_home_page' => ($request->has('is_home_page'))
-
             ]);
             if(!$productCategory){
                 throw new \Exception(__('Kategori Güncellenemedi.'));

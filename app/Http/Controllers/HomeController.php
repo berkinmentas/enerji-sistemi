@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     //
     public function index(){
+
         $solarProducts = Product::query()
-            ->where('product_category_id' , 1)
+            ->where('product_category_id' , 11)
             ->get();
         return view('home', [
             'solarProducts' => $solarProducts,

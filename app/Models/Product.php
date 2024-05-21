@@ -34,6 +34,12 @@ class Product extends Model implements HasMedia
         'light_absorption',
         'surface_coating',
     ];
+
+
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id', 'id');
+    }
     public function registerMediaCollections(): void
     {
         $this
