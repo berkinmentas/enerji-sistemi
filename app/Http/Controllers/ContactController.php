@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Contacts\StoreRequest;
+use App\Models\BranchOffice;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -12,7 +13,11 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contacts');
+        $locations = BranchOffice::query()
+            ->get();
+        return view('contacts', [
+            'locations' => $locations
+        ]);
     }
 
     public function store(StoreRequest $request)

@@ -11,6 +11,7 @@ class BranchOffice extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'location',
+        'go_to_location',
         'title',
         'address',
         'city',

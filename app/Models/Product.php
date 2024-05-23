@@ -55,7 +55,6 @@ class Product extends Model implements HasMedia
                     ->height(200)
                     ->quality(90);
             });
-
         $this
             ->addMediaCollection('document');
 

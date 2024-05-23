@@ -46,6 +46,7 @@ class BranchOfficeController extends Controller
         try{
             $branchOffice = BranchOffice::create([
                 'location' => $request->location,
+                'go_to_location' => $request->go_to_location,
                 'title'=> $request->title,
                 'address'=>$request->address,
                 'city'=>$request->city,
@@ -87,6 +88,7 @@ class BranchOfficeController extends Controller
         try{
             $branchOffice->update([
                 'location' => $request->location,
+                'go_to_location' => $request->go_to_location,
                 'title'=> $request->title,
                 'address'=>$request->address,
                 'city'=>$request->city,

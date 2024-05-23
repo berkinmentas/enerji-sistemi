@@ -10,7 +10,6 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-
         $productParentCategories = ProductCategory::query()
             ->whereNull('parent_id')
             ->get();
@@ -18,12 +17,10 @@ class ProductController extends Controller
         $productCategories = ProductCategory::query()
             ->whereNotNull('parent_id')
             ->get();
-
         $productCategoriesArray = [];
         foreach ($productParentCategories as $productParentCategory) {
             $productCategoriesArray[$productParentCategory->id] = [];
         }
-
         foreach ($productCategories as $productCategory) {
             $productCategoriesArray[$productCategory->parent_id][] = $productCategory;
         }
@@ -31,20 +28,18 @@ class ProductController extends Controller
         foreach ($productParentCategories as $productParentCategory) {
             $productParentCategoriesArray[$productParentCategory->id] = $productParentCategory->name;
         }
-
         $products = Product::query();
         if ($request->has('categories') && !empty($request->categories)) {
             $products = $products
-                ->whereIn('product_category_id', $request->categories)->get();
+                ->whereIn('product_category_id', $request->categories)->paginate(4);
         } elseif ($request->has('categoryAll') && !empty($request->categoryAll)) {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('parent_id', $request->categoryAll);
             });
-            $products = $products->get();
+            $products = $products->paginate(4);
         } else {
-            $products = $products->get();
+            $products = $products->paginate(4);
         }
-
 // ProductCategory::query()->where('id')
         return view('products', [
             'products' => $products,
@@ -53,10 +48,17 @@ class ProductController extends Controller
             'productParentCategoriesArray' => $productParentCategoriesArray
         ]);
     }
-
     public function show($product_id)
     {
         $product = Product::query()->where("id", $product_id)->first();
-        return view('productDetail', ['product' => $product]);
+        $productCategory = ProductCategory::query()->where("id", $product->product_category_id)->first();
+        $products = Product::query()
+            ->where('product_category_id', $product->product_category_id)
+            ->get();
+        return view('productDetail', [
+            'product' => $product,
+            'productCategory' => $productCategory,
+            'products' => $products
+        ]);
     }
 }
