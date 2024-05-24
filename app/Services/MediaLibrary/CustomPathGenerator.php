@@ -24,6 +24,12 @@ class CustomPathGenerator implements BasePathGenerator
             return 'comment/' . $media->model_id . '/logo/' . $media->id . '/';
         elseif ($media->model_type == 'App\Models\Comment')
             return 'comment/' . $media->model_id . '/' . $media->id . '/';
+        elseif ($media->model_type == 'App\Models\Gallery')
+            return 'gallery/' . $media->model_id . '/' . $media->id . '/';
+        elseif ($media->model_type == 'App\Models\Page')
+            return 'page/' . $media->model_id . '/logo' . $media->id . '/';
+        elseif ($media->model_type == 'App\Models\Contact')
+            return 'contact/' . $media->model_id . '/' . $media->id . '/';
 
         return md5($media->id . config('app.key')) . '/';
     }
@@ -38,16 +44,21 @@ class CustomPathGenerator implements BasePathGenerator
     public function getPathForConversions(Media $media): string
     {
         if ($media->model_type == 'App\Models\Product')
-            return 'product/' . $media->model_id . '/' . $media->id . '/conversions/';
+            return $media->collection_name == 'logo' ? 'product/' . $media->model_id . '/logo/' . $media->id . '/conversions/' : 'product/' . $media->model_id . '/' . $media->id . '/conversions/';
         elseif ($media->model_type == 'App\Models\Product')
             return 'product/' . $media->model_id . '/' . $media->id . '/conversions/';
         elseif ($media->model_type == 'App\Models\Comment')
-            return 'comment/' . $media->model_id . '/' . $media->id . '/conversions/';
+            return $media->collection_name == 'logo' ? 'comment/' . $media->model_id . '/logo/' . $media->id . '/conversions/' : 'comment/' . $media->model_id . '/' . $media->id . '/conversions/';
         elseif ($media->model_type == 'App\Models\Comment')
             return 'comment/' . $media->model_id . '/' . $media->id . '/conversions/';
+        elseif ($media->model_type == 'App\Models\Gallery')
+            return 'gallery/' . $media->model_id . '/' . $media->id . '/conversions/';
+        elseif ($media->model_type == 'App\Models\Page')
+            return 'page/' . $media->model_id . '/' . $media->id . '/conversions/';
+        elseif ($media->model_type == 'App\Models\Contact')
+            return 'contact/' . $media->model_id . '/' . $media->id . '/conversions/';
         return md5($media->id . config('app.key')) . '/conversions/';
     }
-
     /**
      * Get the path for responsive images of the given media, relative to the root storage path.
      *
@@ -63,10 +74,12 @@ class CustomPathGenerator implements BasePathGenerator
             return 'product/' . $media->model_id . '/' . $media->id . '/responsive-images/';
         elseif ($media->model_type == 'App\Models\Comment')
             return 'comment/' . $media->model_id . '/' . $media->id . '/responsive-images/';
-        elseif ($media->model_type == 'App\Models\Comment')
-            return 'comment/' . $media->model_id . '/' . $media->id . '/responsive-images/';
-
-
+        elseif ($media->model_type == 'App\Models\Gallery')
+            return 'gallery/' . $media->model_id . '/' . $media->id . '/responsive-images/';
+        elseif ($media->model_type == 'App\Models\Page')
+            return 'page/' . $media->model_id . '/' . $media->id . '/responsive-images/';
+        elseif ($media->model_type == 'App\Models\Contact')
+            return 'contact/' . $media->model_id . '/' . $media->id . '/responsive-images/';
         return md5($media->id . config('app.key')) . '/responsive-images/';
     }
 }

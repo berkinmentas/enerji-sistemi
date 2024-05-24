@@ -31,14 +31,14 @@ class ProductController extends Controller
         $products = Product::query();
         if ($request->has('categories') && !empty($request->categories)) {
             $products = $products
-                ->whereIn('product_category_id', $request->categories)->paginate(4);
+                ->whereIn('product_category_id', $request->categories)->paginate(12);
         } elseif ($request->has('categoryAll') && !empty($request->categoryAll)) {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('parent_id', $request->categoryAll);
             });
-            $products = $products->paginate(4);
+            $products = $products->paginate(12);
         } else {
-            $products = $products->paginate(4);
+            $products = $products->paginate(12);
         }
 // ProductCategory::query()->where('id')
         return view('products', [

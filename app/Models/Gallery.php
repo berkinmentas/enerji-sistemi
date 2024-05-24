@@ -10,20 +10,20 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Comment extends Model  implements HasMedia
+class Gallery extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
+
     protected $fillable = [
-        'name',
-        'title',
-        'comment'
+        'name'
     ];
+
     public function registerMediaCollections(): void
     {
         $this
             ->addMediaCollection('logo')
             ->acceptsFile(function (File $file) {
-                return in_array($file->mimeType, ['image/jpeg', 'image/png']);
+                return in_array($file->mimeType, ['image/jpeg', 'image/png', 'image/webp']);
             })
             ->singleFile()
             ->registerMediaConversions(function (Media $media) {
@@ -31,6 +31,19 @@ class Comment extends Model  implements HasMedia
                     ->addMediaConversion('thumb')
                     ->width(200)
                     ->height(200)
+                    ->quality(90);
+            });
+
+        $this
+            ->addMediaCollection('image')
+            ->acceptsFile(function (File $file) {
+                return in_array($file->mimeType, ['image/jpeg', 'image/png', 'image/webp']);
+            })
+            ->registerMediaConversions(function (Media $media) {
+                $this
+                    ->addMediaConversion('thumb')
+                    ->width(400)
+                    ->height(400)
                     ->quality(90)
                     ->nonQueued();
             });

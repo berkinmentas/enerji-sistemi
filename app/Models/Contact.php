@@ -32,7 +32,8 @@ class Contact extends Model  implements HasMedia
                     ->addMediaConversion('thumb')
                     ->width(200)
                     ->height(200)
-                    ->quality(90);
+                    ->quality(90)
+                    ->nonQueued();
             });
 
         $this

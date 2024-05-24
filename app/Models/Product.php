@@ -45,7 +45,7 @@ class Product extends Model implements HasMedia
         $this
             ->addMediaCollection('logo')
             ->acceptsFile(function (File $file) {
-                return in_array($file->mimeType, ['image/jpeg', 'image/png']);
+                return in_array($file->mimeType, ['image/jpeg', 'image/png', 'image/webp']);
             })
             ->singleFile()
             ->registerMediaConversions(function (Media $media) {
@@ -53,8 +53,24 @@ class Product extends Model implements HasMedia
                     ->addMediaConversion('thumb')
                     ->width(200)
                     ->height(200)
-                    ->quality(90);
+                    ->quality(90)
+                ->nonQueued();
             });
+
+        $this
+            ->addMediaCollection('image')
+            ->acceptsFile(function (File $file) {
+                return in_array($file->mimeType, ['image/jpeg', 'image/png'], 'image/webp');
+            })
+            ->registerMediaConversions(function (Media $media) {
+                $this
+                    ->addMediaConversion('thumb')
+                    ->width(200)
+                    ->height(200)
+                    ->quality(90)
+                    ->nonQueued();
+            });
+
         $this
             ->addMediaCollection('document');
 
