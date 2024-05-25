@@ -18,21 +18,10 @@ class Product extends Model implements HasMedia
         'name',
         'sub_name',
         'description',
-        'hot_water_capacity',
-        'cold_water_capacity',
-        'internal_boiler_thickness',
-        'outer_boiler_thickness',
-        'tube_length',
-        'outer_tube_diameter',
-        'inner_tube_diameter',
-        'glass_thickness',
-        'tube_reflectance_ratio',
-        'empty_tube_temperature',
-        'tube_material',
-        'vacuum',
-        'heat_loss_coefficient',
-        'light_absorption',
-        'surface_coating',
+        'features'
+    ];
+    protected $casts =[
+        'features' => 'array'
     ];
 
 

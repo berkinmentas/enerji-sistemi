@@ -92,6 +92,7 @@ class PageController extends Controller
         try{
             $page->update([
                 'name'=>$request->name,
+                'slug' => Str::slug($request->name),
                 'description' => cleanHtmlContent($request->description)
                 ]);
             if(!$page){

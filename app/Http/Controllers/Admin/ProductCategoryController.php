@@ -71,7 +71,6 @@ class ProductCategoryController extends Controller
                 'parent_id' => $request->parent_id,
                 'name' => $request->name,
                 'description' => $request->description,
-                'is_home_page' => ($request->has('is_home_page'))
             ]);
             if (!$productCategory) {
                 throw new \Exception(__('Kategori Kaydedilemedi.'));
@@ -113,7 +112,6 @@ class ProductCategoryController extends Controller
                 'parent_id' => $request->parent_id,
                 'name' => $request->name,
                 'description' => $request->description,
-                'is_home_page' => ($request->has('is_home_page'))
             ]);
             if(!$productCategory){
                 throw new \Exception(__('Kategori Güncellenemedi.'));

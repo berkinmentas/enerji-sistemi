@@ -15,6 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+
         return view('admin.products.index');
     }
 
@@ -42,28 +43,19 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
+        $features = [];
+        for($i = 0 ; $i< count($request->features); $i+=2){
+            if (isset($request->features[$i + 1])) {
+                $features[$request->features[$i]] = $request->features[$i + 1];
+            }
+        }
         try {
-
             $product = Product::create([
                 'product_category_id' => $request->product_category_id,
                 'name' => $request->name,
                 'sub_name'=>$request->sub_name,
                 'description' => $request->description,
-                'hot_water_capacity' => $request->hot_water_capacity,
-                'cold_water_capacity' => $request->cold_water_capacity,
-                'internal_boiler_thickness' => $request->internal_boiler_thickness,
-                'outer_boiler_thickness' => $request->outer_boiler_thickness,
-                'tube_length' => $request->tube_length,
-                'outer_tube_diameter' => $request->outer_tube_diameter,
-                'inner_tube_diameter' => $request->inner_tube_diameter,
-                'glass_thickness' => $request->glass_thickness,
-                'tube_reflectance_ratio' => $request->tube_reflectance_ratio,
-                'empty_tube_temperature' => $request->empty_tube_temperature,
-                'tube_material' => $request->tube_material,
-                'vacuum' => $request->vacuum,
-                'heat_loss_coefficient' => $request->heat_loss_coefficient,
-                'light_absorption' => $request->light_absorption,
-                'surface_coating' => $request->surface_coating,
+                'features' => $features
             ]);
             if (!$product) {
                 throw new \Exception(__('Ürün Kaydedilemedi.'));
@@ -94,27 +86,21 @@ class ProductController extends Controller
 
     public function update(UpdateRequest $request, Product $product)
     {
+
+        $features = [];
+        for($i = 0 ; $i< count($request->features); $i+=2){
+            if (isset($request->features[$i + 1])) {
+                $features[$request->features[$i]] = $request->features[$i + 1];
+            }
+        }
+
         try {
             $product->update([
                 'product_category_id' => $request->product_category_id,
                 'name' => $request->name,
                 'sub_name' => $request->sub_name,
                 'description' => $request->description,
-                'hot_water_capacity' => $request->hot_water_capacity,
-                'cold_water_capacity' => $request->cold_water_capacity,
-                'internal_boiler_thickness' => $request->internal_boiler_thickness,
-                'outer_boiler_thickness' => $request->outer_boiler_thickness,
-                'tube_length' => $request->tube_length,
-                'outer_tube_diameter' => $request->outer_tube_diameter,
-                'inner_tube_diameter' => $request->inner_tube_diameter,
-                'glass_thickness' => $request->glass_thickness,
-                'tube_reflectance_ratio' => $request->tube_reflectance_ratio,
-                'empty_tube_temperature' => $request->empty_tube_temperature,
-                'tube_material' => $request->tube_material,
-                'vacuum' => $request->vacuum,
-                'heat_loss_coefficient' => $request->heat_loss_coefficient,
-                'light_absorption' => $request->light_absorption,
-                'surface_coating' => $request->surface_coating,
+                'features' => $features
             ]);
             if ($request->has('file') && count($request->file) == 1) {
                 foreach ($request->file as $document) {

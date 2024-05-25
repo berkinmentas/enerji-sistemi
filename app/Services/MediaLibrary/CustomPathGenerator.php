@@ -27,7 +27,7 @@ class CustomPathGenerator implements BasePathGenerator
         elseif ($media->model_type == 'App\Models\Gallery')
             return 'gallery/' . $media->model_id . '/' . $media->id . '/';
         elseif ($media->model_type == 'App\Models\Page')
-            return 'page/' . $media->model_id . '/logo' . $media->id . '/';
+            return 'page/' . $media->model_id . '/' . $media->id . '/';
         elseif ($media->model_type == 'App\Models\Contact')
             return 'contact/' . $media->model_id . '/' . $media->id . '/';
 
