@@ -37,7 +37,12 @@ class ProductController extends Controller
                 $query->where('parent_id', $request->categoryAll);
             });
             $products = $products->paginate(12);
-        } else {
+        }elseif($request->has('search') && !empty($request->search)) {
+            $products = $products->where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('sub_name', 'like', '%' . $request->search . '%')
+                ->paginate(12);
+        }
+        else {
             $products = $products->paginate(12);
         }
 // ProductCategory::query()->where('id')
