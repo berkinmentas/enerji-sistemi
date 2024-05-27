@@ -34,6 +34,13 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'pion/laravel-chunk-upload' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Pion\\Laravel\\ChunkUpload\\Providers\\ChunkUploadServiceProvider',
+    ),
+  ),
   'spatie/laravel-ignition' => 
   array (
     'providers' => 
@@ -43,6 +50,24 @@
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'spatie/laravel-medialibrary' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+    ),
+  ),
+  'yajra/laravel-datatables-oracle' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'DataTables' => 'Yajra\\DataTables\\Facades\\DataTables',
     ),
   ),
 );
