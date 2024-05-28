@@ -35,6 +35,7 @@ class ProductController extends Controller
         } elseif ($request->has('categoryAll') && !empty($request->categoryAll)) {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('parent_id', $request->categoryAll);
+                $query->orWhere('id', $request->categoryAll);
             });
             $products = $products->paginate(12);
         }elseif($request->has('search') && !empty($request->search)) {

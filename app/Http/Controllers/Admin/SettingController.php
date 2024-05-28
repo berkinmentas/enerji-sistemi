@@ -126,6 +126,24 @@ class SettingController extends Controller
             Setting::query()->where('key', 'homePageOurGoalsCardDescription4')->update([
                 'value' => $request->homePageOurGoalsCardDescription4 ?? ''
             ]);
+            Setting::query()->where('key', 'footerDescriptionLeft')->update([
+                'value' => $request->footerDescriptionLeft ?? ''
+            ]);
+            Setting::query()->where('key', 'footerDescriptionRight')->update([
+                'value' => $request->footerDescriptionRight ?? ''
+            ]);
+            Setting::query()->where('key', 'facebook')->update([
+                'value' => $request->facebook ?? ''
+            ]);
+            Setting::query()->where('key', 'instagram')->update([
+                'value' => $request->instagram ?? ''
+            ]);
+            Setting::query()->where('key', 'twitter')->update([
+                'value' => $request->twitter ?? ''
+            ]);
+            Setting::query()->where('key', 'youtube')->update([
+                'value' => $request->youtube ?? ''
+            ]);
 
         } catch (\Exception $exception) {
             throw ValidationException::withMessages([$exception->getMessage()]);
