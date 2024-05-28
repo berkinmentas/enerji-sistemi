@@ -11,62 +11,124 @@
     <section class="contact-us">
         <div class="container">
             <div class="mt-5">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-12 col-lg-5 col-sm-12">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="map">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6142.339939555392!2d27.92242!3d39.668391!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDQwJzAzLjAiTiAyN8KwNTUnMTYuMCJF!5e0!3m2!1sen!2sus!4v1715682338170!5m2!1sen!2sus"
-                                        height="250" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="location">
-                                    <div class="location-title fw-bold">
-                                        Merkez
-                                    </div>
-                                    <div class="address">Yeni Sanayi Sitesi, 17. Sk., No: 20</div>
-                                    <div>Karesi/BALIKESİR</div>
-                                    <div class="phone-number-one">+90 (266) 246 33 46</div>
-                                    <div class="phone-number-two">+90 (266) 246 22 44</div>
-                                    <div class="e-mail">info@ozaytubular.com</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-md-6 col-lg-6 col-sm-12">
-                                    <div class="map">
-                                        <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.9288442126986!2d27.88560487717127!3d39.651315901867356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b700370b1c0c0f%3A0xf2a70f460c63611c!2sEge%2C%20Demirciler%20Cd.%20No%3A81%20D%3Ab%2C%2010020%20Bal%C4%B1kesir%20Merkez%2FBal%C4%B1kesir%2C%20T%C3%BCrkiye!5e0!3m2!1sen!2sus!4v1715682697189!5m2!1sen!2sus"
-                                            height="250" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-sm-12">
-                                    <div class="location">
-                                        <div class="location-title fw-bold">
-                                            Swhowroom
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="row">
+                        @foreach($locations as $branchOffice)
+                            @if($branchOffice->title == 'Merkez')
+                                <div class="col-md-12 col-lg-12 col-sm-12 mt-4">
+                                    <div class="card card-centre overflow-hidden mb-3">
+                                        <div class="row g-0">
+                                            <div class="col-md-12 col-lg-7 col-sm-12">
+                                                @if(!empty($branchOffice->location))
+                                                    <div class="map p-0">
+                                                        {!! $branchOffice->location !!}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-12 col-lg-5 col-sm-12">
+                                                <div class="card-body align-items-center justify-content-center d-flex">
+                                                    <div class="location text-center">
+                                                        <div class="locationContent ">
+                                                            @if(!empty($branchOffice->title))
+                                                                <div class="location-title fw-bold">
+                                                                    {{$branchOffice->title}}
+                                                                </div>
+                                                            @endif
+                                                            @if(!empty($branchOffice->address))
+                                                                <div class="address">{{$branchOffice->address}}</div>
+                                                            @endif
+                                                            <div>
+                                                                @if(!empty($branchOffice->city))
+                                                                    <span>{{$branchOffice->city}}</span>
+                                                                @endif
+                                                                @if(!empty($branchOffice->district))
+                                                                    <span>{{$branchOffice->district}}</span>
+                                                                @endif
+                                                            </div>
+                                                            @if(!empty($branchOffice->phone_number))
+                                                                <div class="phone-number-one">{{$branchOffice->phone_number}}</div>
+                                                            @endif
+                                                            @if(!empty($branchOffice->phone_number2))
+                                                                <div class="phone-number-two">{{$branchOffice->phone_number2}}</div>
+                                                            @endif
+                                                            @if(!empty($branchOffice->email))
+                                                                <div class="e-mail">{{$branchOffice->email}}</div>
+                                                            @endif
+                                                            @if(!empty($branchOffice->location))
+                                                                <div class="mt-2 go-to-location">
+                                                                    <a href="{{$branchOffice->go_to_location}}" class="text-decoration-none go-to-location"><i class="fa-solid fa-location-dot pe-2 go-to-location-icon"></i>Konuma Git</a>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="address">Ege mh. Demirciler Cd No:81/B</div>
-                                        <div>Karesi/BALIKESİR</div>
-                                        <div class="phone-number-one">+90 (266) 244 44 24</div>
-                                        <div class="e-mail">info@ozaytubular.com</div>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-md-6 col-lg-6 col-sm-12 mt-4">
+                                    <div class="col-md-12 col-lg-12 col-sm-12">
+                                        <div class="card card-other overflow-hidden">
+                                            @if(!empty($branchOffice->location))
+                                                <div class="map ">
+                                                    {!! $branchOffice->location !!}
+                                                </div>
+                                            @endif
+                                            <div class="card-body">
+                                                <div class="location text-center mt-2">
+                                                    <div class="locationContent">
+                                                        @if(!empty($branchOffice->title))
+                                                            <div class="location-title fw-bold">
+                                                                {{$branchOffice->title}}
+                                                            </div>
+                                                        @endif
+                                                        @if(!empty($branchOffice->address))
+                                                            <div class="address">{{$branchOffice->address}}</div>
+                                                        @endif
+                                                        <div>
+                                                            @if(!empty($branchOffice->city))
+                                                                <span>{{$branchOffice->city}}</span>
+                                                            @endif
+                                                            @if(!empty($branchOffice->district))
+                                                                <span>{{$branchOffice->district}}</span>
+                                                            @endif
+                                                        </div>
+                                                        @if(!empty($branchOffice->phone_number))
+                                                            <div class="phone-number-one">{{$branchOffice->phone_number}}</div>
+                                                        @endif
+                                                        @if(!empty($branchOffice->phone_number2))
+                                                            <div class="phone-number-two">{{$branchOffice->phone_number2}}</div>
+                                                        @endif
+                                                        @if(!empty($branchOffice->email))
+                                                            <div class="e-mail">{{$branchOffice->email}}</div>
+                                                        @endif
+                                                        @if(!empty($branchOffice->location))
+                                                            <div class="mt-2 go-to-location">
+                                                                <a href="{{$branchOffice->go_to_location}}" class="text-decoration-none go-to-location"><i class="fa-solid fa-location-dot pe-2 go-to-location-icon"></i>Konuma Git</a>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            @endif
+                        @endforeach
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-7 col-sm-12 text-center">
+                    <div class="col-md-12 col-lg-6 col-sm-12 text-center mt-5">
                         <div class="contact-us-form-title"><h3>İletişim</h3></div>
                         <form id="contactForm" class="ps-5 contact-us-form">
                             @csrf
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="emailAddress" type="email" placeholder="Email Address"
-                                       data-sb-validations="required,email" name="email" oninvalid="this.setCustomValidity('Bu alan email olmak zorundadır.')"/>
-                                <label for="emailAddress">Email Address</label>
+                                       data-sb-validations="required,email" name="email"
+                                       oninvalid="this.setCustomValidity('Bu alan email olmak zorundadır.')"/>
+                                <label for="emailAddress">Email Adresi</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="Phone Number" type="text" placeholder="phoneNumber"
@@ -84,7 +146,7 @@
                                 <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Gönder</button>
                             </div>
                         </form>
-                      @push('js-stack')
+                        @push('js-stack')
                             <script>
                                 window.addEventListener('DOMContentLoaded', () => {
                                     let $contactFormPage = $("form#contactForm");
@@ -114,7 +176,7 @@
                                     });
                                 });
                             </script>
-                      @endpush
+                        @endpush
                     </div>
                 </div>
             </div>

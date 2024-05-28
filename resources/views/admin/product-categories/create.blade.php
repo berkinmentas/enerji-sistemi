@@ -8,6 +8,16 @@
                     <form class="form" id="productCategoryStore" enctype="multipart/form-data">
                         <div class="p-4">
                             <div class="mb-3">
+                                <label for="parent_id">{{ __('Ana Kategori Seçiniz') }}</label>
+                                <div class="mb-3" style="font-size: 14px">(Ana kategori eklenecekse seçmek zorunlu değildir. Alt kategori eklenecekse seçilebilir.)</div>
+                                <select class="form-select" aria-label="parent_id" id="parent_id" name="parent_id">
+                                    <option selected value="{{null}}">Ana Kategori Yok</option>
+                                    @foreach($productCategories as $productCategory)
+                                        <option value="{{$productCategory->id}}">{{$productCategory->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="name">{{ __('Kategori Adı') }}</label>
                                 <input required type="text" class="form-control" id="name" name="name">
                             </div>

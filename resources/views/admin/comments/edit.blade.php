@@ -31,7 +31,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-3 col-lg-2">
                                                 <div class="gallery-image mb-3">
-                                                    <img src="{{ $comment->getFirstMediaUrl('logo', 'thumb') }}"
+                                                    <img src="{{ $comment->getFirstMediaUrl('logo') }}"
                                                          alt="Logo">
                                                 </div>
                                             </div>

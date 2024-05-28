@@ -14,10 +14,26 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description">{{ __('Sayfa Açıklaması') }}</label>
-                                <textarea type="text" class="form-control tinyMce" id="description" name="description"
-                                          style="max-height: 200px">{{$page->description}}</textarea>
+                                <textarea rows="8" type="text" class="form-control tinyMce" id="description" name="description"
+                                        >{{$page->description}}</textarea>
                             </div>
+                            <div class="mb-3">
 
+                                @include('admin.includes._dropzone-single', ['title' => 'Görsel'])
+                                @if(!empty($page->getMedia('logo')) && count($page->getMedia('logo')) > 0)
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3 col-lg-2">
+                                                <div class="gallery-image mb-3">
+                                                    <img src="{{ $page->getFirstMediaUrl('logo', 'thumb') }}"
+                                                         alt="Logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">

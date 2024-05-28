@@ -24,19 +24,37 @@
         <div class="container">
             <div class="navbar-search-area d-flex row justify-content-between align-items-center py-2">
                 <div class="navbar-search-area-social-wrapper col-lg-4 col-md-4 col-sm-12">
-                    <span><a href="#faceboook" class="navbar-search-area-social"><i class="fa-brands fa-facebook-f"></i></a></span>
-                    <span><a href="#twitter" class="navbar-search-area-social"><i
+                    <span><a href="{{ config('settings.facebook') }}" class="navbar-search-area-social"><i class="fa-brands fa-facebook-f"></i></a></span>
+                    <span><a href="{{ config('settings.twitter') }}" class="navbar-search-area-social"><i
                                 class="fa-brands fa-twitter"></i></a></span>
-                    <span><a href="#youtube" class="navbar-search-area-social"><i
+                    <span><a href="{{ config('settings.youtube') }}" class="navbar-search-area-social"><i
                                 class="fa-brands fa-youtube"></i></a></span>
+                    <span><a href="{{ config('settings.instagram') }}" class="navbar-search-area-social"><i class="fa-brands fa-instagram"></i></a></span>
                 </div>
                 <div class="input-group navbar-search-area-search-box col-lg-8 col-md-8 col-sm-12">
-                    <input type="text" class="form-control" placeholder="Bul..."
-                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <form action="{{route('products.index')}}" class="search-form d-flex navbar-search-area-search-box" method="GET">
+                    <input type="text" class="form-control search-input" placeholder="Bul..."
+                           aria-label="Recipient's username" aria-describedby="button-addon2" name="search">
                     <button class="btn btn-outline-secondary navbar-search-area-search-box-icon" type="button"
                             id="button-addon2"><i
                             class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    @push('js-stack')
+                        <script>
+                           form =  document.querySelector('.search-form')
+                           form.addEventListener('submit', function (e){
+                             let inputValue =  form.querySelector("input").value
+                              inputValue = inputValue.trim()
+                                e.preventDefault()
+                               if(inputValue.length>3){
+                                   this.submit()
+                               }
+
+                           })
+                        </script>
+                    @endpush
                 </div>
+
             </div>
         </div>
     </div>
@@ -52,18 +70,10 @@
             <div class="collapse  navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link header-btn" href="/">Ana Sayfa</a>
+                        <a class="nav-link header-btn" href="{{route('home')}}">Ana Sayfa</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Ürünlerimiz
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('products.index', ['product_category_id' => 1])}}">Güneş Enerji Sistemleri</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/tum-pv-paket-sistemleri">PV Paket Sistemleri</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link header-btn" href="{{route('products.index')}}">Ürünlerimiz</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -71,8 +81,6 @@
                             Kurumsal
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/hakkimizda">Hakkımızda</a></li>
-                            <li><a class="dropdown-item" href="/misyonumuz">Vizyon ve Misyonumuz</a></li>
                             @foreach($pages as $pageItem)
                                 <li><a class="dropdown-item"
                                        href="{{ route('page.show', ['slug' => $pageItem->slug]) }}">{{ $pageItem->name }}</a>
@@ -82,10 +90,10 @@
                         </ul>
                     </li>
                     <li class="nav-item header-btn">
-                        <a class="nav-link" href="#">Şubelerimiz</a>
+                        <a class="nav-link" href="{{route('branchOffice.index')}}">Şubelerimiz</a>
                     </li>
                     <li class="nav-item header-btn">
-                        <a class="nav-link" href="/iletisim">İletişim</a>
+                        <a class="nav-link" href="{{route('contacts')}}">İletişim</a>
                     </li>
 
                 </ul>
@@ -105,29 +113,12 @@
                 <ul class="navbar-nav ms-auto navbar-mobile-modal-menu accordion accordion-flush"
                     id="accordionFlushExample">
                     <li class="nav-item">
-                        <a class="nav-link header-btn" href="/">Ana Sayfa</a>
+                        <a class="nav-link header-btn" href="{{route('home')}}">Ana Sayfa</a>
                     </li>
                     <li class="nav-item header-btn">
-                        <a class="nav-link" href="#">Ürünlerimiz</a>
+                        <a class="nav-link" href="{{route('products.index')}}">Ürünlerimiz</a>
                     </li>
-                    <li class="nav-item accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button
-                                class="accordion-button header-btn collapsed d-flex align-items-center justify-content-center"
-                                type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                aria-expanded="false" aria-controls="flush-collapseTwo">
-                                <span>Ürünlerimiz</span>
-                                <i class="fa-solid fa-angle-down accordion-down-btn"></i>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                             aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExampleTwo">
-                            <div><a class="accordion-body accordion-body-text" href="{{route('products.index', ['product_category_id' => 1])}}">Güneş
-                                    Enerji Sistemleri</a></div>
-                            <div><a class="accordion-body accordion-body-text" href="/tum-pv-paket-sistemleri">PV Paket
-                                    Sistemleri</a></div>
-                        </div>
-                    </li>
+
                     <li class="nav-item accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button
@@ -140,9 +131,6 @@
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse collapse"
                              aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div><a class="accordion-body accordion-body-text" href="/hakkimizda">Hakkımızda</a></div>
-                            <div><a class="accordion-body accordion-body-text" href="/misyonumuz">Vizyon ve
-                                    Misyonumuz</a></div>
                             @foreach($pages as $pageItem)
                                 <div><a class="accordion-body accordion-body-text" href="{{ route('page.show', ['slug' => $pageItem->slug]) }}">{{ $pageItem->name }}</a></div>
                             @endforeach
@@ -159,10 +147,10 @@
 
                     </ul>
                     <li class="nav-item header-btn">
-                        <a class="nav-link" href="#">Şubelerimiz</a>
+                        <a class="nav-link" href="{{route('branchOffice.index')}}">Şubelerimiz</a>
                     </li>
                     <li class="nav-item header-btn">
-                        <a class="nav-link" href="/iletisim">İletişim</a>
+                        <a class="nav-link" href="{{route('contacts')}}">İletişim</a>
                     </li>
 
                 </ul>
@@ -183,31 +171,29 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="footer-logo"><img
                             src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/logo.png')}}" alt=""></div>
-                    <div class="footer-description footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Vivamus vel feugiat lectus. Quisque et egestas sem, eu rutrum est. Donec finibus rutrum ligula
-                        eu consequat. Proin ultrices tempor tellus, vel dictum dolor viverra non. Donec aliquet dictum
-                        enim. Duis tempus augue enim, non ornare nisi commodo porta.
+                    <div class="footer-description footer mt-2">{{ config('settings.footerDescriptionLeft') }}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 px-5 footer-links">
                     <h3>Linkler</h3>
                     <div class="row mt-5">
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="mb-2"><a href="#anasayfa" class="footer-link">Home</a></div>
-                            <div class="mb-2"><a href="#urunler" class="footer-link">Ürünler</a></div>
-                            <div class="mb-2"><a href="#kurumsal" class="footer-link">Kurumsal</a></div>
+                            <div class="mb-2"><a href="{{route('home')}}" class="footer-link">Ana Sayfa</a></div>
+                            <div class="mb-2"><a href="{{route('products.index')}}" class="footer-link">Ürünler</a></div>
+                            <div class="mb-2"><a href="{{route('contacts')}}" class="footer-link">İletişim</a></div>
+
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="mb-2"><a href="#subelerimiz" class="footer-link">Şubelerimiz</a></div>
-                            <div class="mb-2"><a href="#iletisim" class="footer-link">İletişim</a></div>
+                        @foreach($pages as $pageItem)
+                            <div class="mb-2"><a class="footer-link" style="white-space: nowrap"
+                                                 href="{{ route('page.show', ['slug' => $pageItem->slug]) }}">{{ $pageItem->name }}</a>
+                            </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="footer-right-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                        malesuada lacus non blandit fringilla. Suspendisse id tellus et tellus dapibus fermentum. Sed
-                        posuere purus libero, eu hendrerit nulla pulvinar ut. Ut a ante tempus, dapibus augue lobortis,
-                        malesuada quam. Duis hendrerit tellus eget posuere porttitor. Pellentesque id nunc libero.
+                    <div class="footer-right-text">{{ config('settings.footerDescriptionRight') }}
                     </div>
                 </div>
             </div>

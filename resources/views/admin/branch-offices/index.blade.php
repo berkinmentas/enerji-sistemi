@@ -8,19 +8,20 @@
                 <div class="table-responsive bg-white rounded-2 shadow datatable-table-wrapper">
                     <div class="mb-4">
                         <div class="row d-flex justify-content-center">
-                            <h5 class="col-sm-6 col-lg-6 col-md-6 fw-bold">Kategori Listesi</h5>
+                            <h5 class="col-sm-6 col-lg-6 col-md-6 fw-bold">Şube Listesi</h5>
                             <div class="col-sm-6 col-lg-6 col-md-6 d-flex align-items-center justify-content-end">
-                                <a  href="{{route('admin.productCategories.create')}}" class="btn btn-primary">Kategori Ekle</a>
+                                <a  href="{{route('admin.branchOffices.create')}}" class="btn btn-primary">Şube Ekle</a>
                             </div>
                         </div>
                     </div>
-                    <table class="table table-product-categories table-datatable table-projects w-100">
+                    <table class="table table-branch-offices table-datatable table-projects w-100">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>İsim</th>
-                            <th>Ana Kategori</th>
-                            <th>Açıklama</th>
+                            <th>Şube Adı</th>
+                            <th>Adres</th>
+                            <th>İl</th>
+                            <th>İlçe</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
@@ -30,12 +31,12 @@
                     @push('js-stack')
                         <script>
                             window.addEventListener('DOMContentLoaded', function () {
-                                let tableList = window.tableList = $('.table-product-categories').DataTable({
+                                let tableList = window.tableList = $('.table-branch-offices').DataTable({
                                     processing: true,
                                     serverSide: true,
                                     lengthChange: false,
                                     ajax: {
-                                        url: '{{ route('admin.productCategories.datatable') }}',
+                                        url: '{{ route('admin.branchOffices.datatable') }}',
                                         type: 'POST',
                                         data: function (d) {
                                         },
@@ -44,9 +45,10 @@
                                     pageLength: 10,
                                     columns: [
                                         {"data": "id"},
-                                        {"data": "name"},
-                                        {"data": "parent_id"},
-                                        {"data": "description"},
+                                        {"data": "title"},
+                                        {"data": "address"},
+                                        {"data": "city"},
+                                        {"data": "district"},
                                         {"data": "actions"},
                                     ],
                                     columnDefs: [

@@ -8,4 +8,5 @@
     @yield('productDetail')
     @yield('pvPackages')
     @yield('pages')
+    @yield('branchOffices')
 @endsection

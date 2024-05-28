@@ -3,29 +3,23 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
-                <h2 class="fw-bold mb-4">Sayfa Ekle</h2>
+                <h2 class="fw-bold mb-4">Galeri Ekle</h2>
                 <div class="bg-white shadow">
                     <form class="form" id="pagesStore" enctype="multipart/form-data">
                         <div class="p-4">
                             <div class="mb-3">
-                                <label for="name">{{ __('Sayfa Adı') }}</label>
+                                <label for="name">{{ __('Galeri') }}</label>
                                 <input required type="text" class="form-control" id="name" name="name">
                             </div>
                             <div class="mb-3">
-                                <label for="description">{{ __('Sayfa Açıklama') }}</label>
-
-                                <textarea type="text" class="form-control tinyMce" id="description" name="description"
-                                          style="max-height: 200px"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                @include('admin.includes._dropzone-single', ['title' => 'Görsel'])
+                                @include('admin.includes._dropzone', ['title' => 'Görseller'])
                             </div>
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">
                                 <span class="spinner-border spinner-border-sm me-1 btn-spinner d-none" role="status"
                                       aria-hidden="true"></span>
-                                Sayfa Ekle
+                                Galeri Ekle
                             </button>
                         </div>
                     </form>
@@ -46,13 +40,13 @@
                     $projects.find("button[type=submit]").attr("disabled", "disabled");
 
                     $.ajax({
-                        url: '{{ route('admin.pages.store') }}',
+                        url: '{{ route('admin.galleries.store') }}',
                         method: 'POST',
                         data: formData,
                         processData: false,
                         contentType: false,
                         success: function () {
-                            window.location = "{{ route('admin.pages.index') }}";
+                            window.location = "{{ route('admin.galleries.index') }}";
                         },
                         error: function (e) {
                             $projects.find("button[type=submit]").removeAttr("disabled")

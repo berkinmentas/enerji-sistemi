@@ -8,6 +8,7 @@ import 'tinymce/icons/default/icons';
 import 'tinymce/themes/silver/theme';
 import 'tinymce/models/dom/model';
 
+
 import.meta.glob([
     '../images/**'
 ])
@@ -105,11 +106,12 @@ window.dropzoneQueueCompleteEventHandler = function () {
     document.querySelector('form button[type="submit"]').removeAttribute('disabled');
 }
 tinymce.init({
-    selector: 'textarea#description',
+    selector: '.tinyMce',
     skin: false,
     content_css: false,
     menubar: false,
-    toolbar: "h1 h2 h3 h4 h5 bold italic blockquote | link | table | removeformat | code | media",
+    plugins: "textcolor",
+    toolbar: "h1 h2 h3 h4 h5 bold italic blockquote | forecolor | link | table | code | media",
 });
 
 //dropzone

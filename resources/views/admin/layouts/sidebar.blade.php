@@ -51,6 +51,18 @@
                     <span>Yorumlar</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.branchOffices.index')}}">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Şubeler</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.galleries.index')}}">
+                    <i class="fa-regular fa-images"></i>
+                    <span>Galeri</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

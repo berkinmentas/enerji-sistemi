@@ -329,15 +329,17 @@ div.dataTables_processing {
             cursor: inherit;
         }
 
-        a {
-            &:hover {
-                .hover {
-                    display: block;
-                    transition: all 0.2s ease-in-out;
+
+        &:hover {
+            .hover {
+                display: block;
+                transition: all 0.2s ease-in-out;
+                button{
+                    position: relative;
+                    z-index: 9999;
                 }
             }
         }
-
         .file-name {
             small {
                 display: block;
@@ -414,6 +416,26 @@ div.dataTables_processing {
     .dashboard-information-list-item {
         a {
             color: $link-color;
+        }
+    }
+}
+
+.login{
+    background-image: url("/Applications/XAMPP/xamppfiles/htdocs/ozay-enerji-sistemleri/resources/images/hero-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    .login-wrapper{
+        opacity: 1 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        .login-form{
+            background-color: white;
+            padding: 50px 100px;
+            border-radius: 20px;
         }
     }
 }

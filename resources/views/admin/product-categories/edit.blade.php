@@ -8,6 +8,15 @@
                     <form class="form" id="productCategoryUpdate" enctype="multipart/form-data">
                         <div class="p-4">
                             <div class="mb-3">
+                                <label for="parent_id">{{ __('Ana Kategori Seçiniz') }}</label>
+                                <select class="form-select" aria-label="parent_id" name="parent_id" id="parent_id">
+                                    <option selected value="">Ana Kategori Yok</option>
+                                    @foreach($productParentCategories as $productParentCategory)
+                                        <option {{ $productCategory->parent_id == $productParentCategory->id ? 'selected' : '' }}  value="{{$productParentCategory->id}}">{{$productParentCategory->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="name">{{ __('Kategori Adı') }}</label>
                                 <input required type="text" class="form-control" id="name" name="name"
                                        value="{{$productCategory->name}}">
@@ -17,14 +26,7 @@
                                 <input  type="text" class="form-control" id="description" name="description"
                                        value="{{$productCategory->description}}">
                             </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="is_home_page" {{$productCategory->is_home_page == 1 ? 'checked' : ''}}>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Ana Sayfada Göster
-                                    </label>
-                                </div>
-                            </div>
+
 
                         </div>
                         <div class="p-4 bg-gray d-flex justify-content-end">

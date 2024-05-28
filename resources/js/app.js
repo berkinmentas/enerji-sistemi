@@ -141,7 +141,7 @@ const productWaterHeatingPvPackageSlider = new Swiper('.product-water-heating-pv
 
 const swiper = new Swiper('.comments-swiper', {
     loop: true,
-    //autoplay: true,
+    autoplay: true,
     spaceBetween: 10,
     preloadImages: true,
     centeredSlides: true,
@@ -154,12 +154,56 @@ const swiper = new Swiper('.comments-swiper', {
         prevEl: '.swiper-button-prev',
     },
 
+
     // And if we need scrollbar
     scrollbar: {
         el: '.swiper-scrollbar',
     },
 });
+const similarProductSwiper = new Swiper('.similar-product-swiper', {
+    loop: true,
+    autoplay: true,
+    spaceBetween: 10,
+    preloadImages: true,
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        480: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 40
+        },
+        1250: {
+            slidesPerView: 3,
+            spaceBetween: 40
+        },
+        1800: {
+            slidesPerView: 4,
+            spaceBetween: 40
+        }
+    },
 
+    // And if we need scrollbar
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+});
 const heroCardsMobile = new Swiper('.hero-cards-mobile-swiper', {
     loop: true,
     autoplay: true,
@@ -226,4 +270,26 @@ navbarMobileModalCloseBtn.addEventListener('click', function (){
     navbarMobileModal.classList.remove("show");
 })
 
+/*
+let productDetailMenuDescription = document.querySelector('.product-description');
+let productDetailMenuInformation = document.querySelector('.product-information');
 
+productDetailMenuDescription.addEventListener('click', function(){
+    const classList = productDetailMenuDescription.classList
+    classList.forEach((classList, i)=>{
+        if(i != 'active'){
+            productDetailMenuDescription.classList.add("active")
+            productDetailMenuInformation.classList.remove("active")
+        }
+    });
+})
+productDetailMenuInformation.addEventListener('click', function (){
+    const classListInformation = productDetailMenuDescription.classList
+    classListInformation.forEach((classList, i)=>{
+        if(i != 'active'){
+            productDetailMenuInformation.classList.add("active")
+            productDetailMenuDescription.classList.remove("active")
+        }
+    });
+})
+*/

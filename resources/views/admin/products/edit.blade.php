@@ -33,83 +33,33 @@
                                 <textarea type="text" class="form-control tinyMce" id="description" name="description"
                                           style="max-height: 200px">{{$product->description}}</textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="hot_water_capacity">{{ __('Sıcak Su Kapasitesi') }}</label>
-                                <input type="text" class="form-control" id="hot_water_capacity"
-                                       name="hot_water_capacity" value="{{$product->hot_water_capacity}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="cold_water_capacity">{{ __('Soğuk Su Kapasitesi') }}</label>
-                                <input type="text" class="form-control" id="cold_water_capacity"
-                                       name="cold_water_capacity" value="{{$product->cold_water_capacity}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="internal_boiler_thickness">{{ __('İç Kazan Kalınlığı') }}</label>
-                                <input type="text" class="form-control" id="internal_boiler_thickness"
-                                       name="internal_boiler_thickness" value="{{$product->internal_boiler_thickness}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="outer_boiler_thickness">{{ __('Dış Kazan Kalınlığı') }}</label>
-                                <input type="text" class="form-control" id="outer_boiler_thickness"
-                                       name="outer_boiler_thickness" value="{{$product->outer_boiler_thickness}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="tube_length">{{ __('Tüp Uzunluğu') }}</label>
-                                <input type="text" class="form-control" id="tube_length"
-                                       name="tube_length" value="{{$product->tube_length}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="outer_tube_diameter">{{ __('Dış Tüp Çapı') }}</label>
-                                <input type="text" class="form-control" id="outer_tube_diameter"
-                                       name="outer_tube_diameter" value="{{$product->outer_tube_diameter}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inner_tube_diameter">{{ __('İç Tüp Çapı') }}</label>
-                                <input type="text" class="form-control" id="inner_tube_diameter"
-                                       name="inner_tube_diameter" value="{{$product->inner_tube_diameter}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="glass_thickness">{{ __('Cam Kalınlığı') }}</label>
-                                <input type="text" class="form-control" id="glass_thickness"
-                                       name="glass_thickness" value="{{$product->glass_thickness}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="tube_reflectance_ratio">{{ __('Tüp Yansıma Oranı') }}</label>
-                                <input type="text" class="form-control" id="tube_reflectance_ratio"
-                                       name="tube_reflectance_ratio" value="{{$product->hot_water_capacity}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="empty_tube_temperature">{{ __('Boş Tüp Sıcaklık') }}</label>
-                                <input type="text" class="form-control" id="empty_tube_temperature"
-                                       name="empty_tube_temperature" value="{{$product->empty_tube_temperature}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="tube_material">{{ __('Tüp Malzemesi') }}</label>
-                                <input type="text" class="form-control" id="tube_material"
-                                       name="tube_material" value="{{$product->tube_material}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="vacuum">{{ __('Vakum') }}</label>
-                                <input type="text" class="form-control" id="vacuum"
-                                       name="vacuum" value="{{$product->vacuum}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="heat_loss_coefficient">{{ __('Isı Kayıp Katsayısı') }}</label>
-                                <input type="text" class="form-control" id="heat_loss_coefficient"
-                                       name="heat_loss_coefficient" value="{{$product->heat_loss_coefficient}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="light_absorption">{{ __('Işık Apsorp Etme') }}</label>
-                                <input type="text" class="form-control" id="light_absorption"
-                                       name="light_absorption" value="{{$product->light_absorption}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="surface_coating">{{ __('Yüzey Kaplama') }}</label>
-                                <input type="text" class="form-control" id="surface_coating"
-                                       name="surface_coating" value="{{$product->surface_coating}}">
-                            </div>
-                            <div class="mb-3">
+                            <div class="features" id="features">
+                                <label for="description" class="my-3">{{ __('Ürün Özellikleri') }}</label>
+                                @foreach($product->features as $key => $feature)
+                                    <div class="mb-1 d-flex justify-content-between align-items-center features-inputs"
+                                         id="input-area">
+                                        <div class="col-5">
+                                            <input  type="text" class="form-control" id="features-key"
+                                                   name="features[]"
+                                                   value="{{$key}}">
+                                        </div>
+                                        <div class="fw-bold fs-4">
+                                            :
+                                        </div>
 
+                                        <div class="col-6">
+                                            <input  type="text" class="form-control" id="features-value"
+                                                   name="features[]"
+                                                   value="{{$feature}}">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="mb-5 mt-2 text-end">
+                                <div class="btn btn-danger" id="feature-click">Ürün Özellik Satırı Ekle
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 @include('admin.includes._dropzone-single', ['title' => 'Görsel'])
                                 @if(!empty($product->getMedia('logo')) && count($product->getMedia('logo')) > 0)
 
@@ -141,6 +91,21 @@
 
     @push('js-stack')
         <script>
+            document.getElementById('feature-click').addEventListener('click', function() {
+                var rowCount = document.querySelectorAll('.features-inputs').length;
+                var newRowHTML = `
+            <div class="mb-1 d-flex justify-content-between align-items-center features-inputs" id="input-area-${rowCount + 1}">
+                <div class="col-5">
+                    <input  type="text" class="form-control" id="features-key-${rowCount + 1}" name="features[]=features-key" placeholder="Ürün Özellik Başlığı">
+                </div>
+                <div class="fw-bold fs-4">:</div>
+                <div class="col-6">
+                    <input  type="text" class="form-control" id="features-value-${rowCount + 1}" name="features[]=features-value-${rowCount + 1}" placeholder="Ürün Özelliği">
+                </div>
+            </div>
+        `;
+                document.getElementById('features').insertAdjacentHTML('beforeend', newRowHTML);
+            });
             window.addEventListener('DOMContentLoaded', () => {
                 let $projects = $("form#productsUpdate");
 

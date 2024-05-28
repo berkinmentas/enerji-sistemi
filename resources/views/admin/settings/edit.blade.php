@@ -252,6 +252,56 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card custom-card shadow mb-3">
+                        <div class="card-header border-bottom">
+                            <h3 class="card-title fw-bold text-primary mb-0" style="font-size: 1.25rem;">Footer (Sayfa Alt Bilgi)</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <div class="mb-3">
+                                    <label for="footerDescriptionLeft">{{ __('Footer Açıklama #1') }}</label>
+                                    <input type="text" class="form-control" id="footerDescriptionLeft" name="footerDescriptionLeft"
+                                           value="{{ config('settings.footerDescriptionLeft') }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="footerDescriptionRight">{{ __('Footer Açıklama #2') }}</label>
+                                    <input type="text" class="form-control" id="footerDescriptionRight" name="footerDescriptionRight"
+                                           value="{{ config('settings.footerDescriptionRight') }}">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card custom-card shadow mb-3">
+                        <div class="card-header border-bottom">
+                            <h3 class="card-title fw-bold text-primary mb-0" style="font-size: 1.25rem;">Sosyal Medya Hesapları</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <div class="mb-3">
+                                    <label for="footerDescriptionLeft">{{ __('Facebook Hesabı') }}</label>
+                                    <input type="text" class="form-control" id="facebook" name="facebook"
+                                           value="{{ config('settings.facebook') }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="footerDescriptionRight">{{ __('Instagram Hesabı') }}</label>
+                                    <input type="text" class="form-control" id="instagram" name="instagram"
+                                           value="{{ config('settings.instagram') }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="footerDescriptionRight">{{ __('Twitter Hesabı') }}</label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter"
+                                           value="{{ config('settings.twitter') }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="footerDescriptionRight">{{ __('Youtube Hesabı') }}</label>
+                                    <input type="text" class="form-control" id="youtube" name="youtube"
+                                           value="{{ config('settings.youtube') }}">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class=" bg-gray d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">
                                 <span class="spinner-border spinner-border-sm me-1 btn-spinner d-none" role="status"

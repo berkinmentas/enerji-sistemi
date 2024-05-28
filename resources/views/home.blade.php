@@ -190,280 +190,51 @@
     </section>
 
     <section class="water-heating-section">
-        <div
-            class="water-heating-section-title container mb-5 d-flex justify-content-center align-items-center flex-column fs-2">
-            <div>
-                GÜNEŞ ENERJİ
-            </div>
-            <strong>
-                SU ISITMA SİSTEMLERİ
-            </strong>
-            <div class="fs-5 mt-4">
-                <button class="btn-primary p-2">
-                    <a href="{{route('products.index', ['product_category_id' => 1])}}"
-                       class="text-decoration-none text-white">Tümünü Gör</a>
-                </button>
-            </div>
-        </div>
-        <!-- Slider main container -->
-
-        <div class="swiper product-water-heating-swiper product-water-heating-main-swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                @foreach($solarProducts as $solarProduct)
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title px-3 pt-3 fw-bold">
-                                {{$solarProduct->name}}
-                            </div>
-                            <div class="product-card-title px-3 pb-3">
-                                {{$solarProduct->sub_name}}
-                            </div>
-                            <div class="overflow-hidden">
-                                <img
-                                    src="{{$solarProduct->getFirstMediaUrl('logo')}}"
-                                    class="card-img-top lazy" alt="...">
-                            </div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
+        @foreach($productCategories as $productCategory)
+            @if($productCategory->parent_id == null && $productsAll[$productCategory->id] != null)
+                <div class="water-heating-section-title container mb-5 d-flex justify-content-center align-items-center flex-column fs-2 mt-5">
+                    <div>{{$productCategory->name}}</div>
+                    <div class="fs-5 mt-4">
+                        <button class="btn-primary p-2">
+                            <a href="{{route('products.index', ['categoryAll' => $productCategory->id])}}"
+                               class="text-decoration-none text-white">Tümünü Gör</a>
+                        </button>
                     </div>
-                @endforeach
-            </div>
-            <div class="swiper-pagination-wrapper">
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-
-    </section>
-    <section class="water-heating-section">
-        <div
-            class="water-heating-section-title container mb-5 d-flex justify-content-center align-items-center flex-column fs-2">
-            <div>
-                GÜNEŞ ENERJİ
-            </div>
-            <strong>
-                PV PAKET SİSTEMLERİ
-            </strong>
-            <div class="fs-5 mt-4">
-                <button class="btn-primary p-2">
-                    <a href="/tum-pv-paket-sistemleri" class="text-decoration-none text-white">Tümünü Gör</a>
-                </button>
-            </div>
-        </div>
-        <!-- Slider main container -->
-        <div class="">
-            <div class="swiper product-water-heating-swiper product-water-heating-pv-package-swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="product-card-title p-3">
-                                <div>GÜNEŞ PANELİ</div>
-                                <div>PAKET SİSTEM 3</div>
-                            </div>
-                            <div class="overflow-hidden">
-                                <img loading="lazy"
-                                     src="{{Vite::asset('resources/images/ozay-pvc.webp')}}"
-                                     class="card-img-top lazy" alt="...">
-                            </div>
-                            <div class="swiper-lazy-preloader"></div>
-                            <div
-                                class="card-body product-card-body-button d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-decoration-none">İNCELE</a>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
-                <div class="swiper-pagination-wrapper">
-                    <div class="swiper-pagination"></div>
-                </div>
+            <div class="container-fluid">
+            <div class="row ">
+                        @foreach($productsAll[$productCategory->id] as $i=>$product)
+                            @if($i == 6 )
+                                @break
+                             @endif
+
+                                <div class="col-lg-4 col-xl-3 col-xxl-2 col-md-4 col-sm-6 d-flex align-items-center justify-content-center">
+                                    <div class="card mt-3">
+                                        <div class="product-card-title p-3">
+                                            <div class="fw-bold">
+                                                {{$product->name}}
+                                            </div>
+                                            <div>
+                                                {{$product->sub_name}}
+                                            </div>
+                                        </div>
+                                        <div class="overflow-hidden card-img-wrapper">
+                                            <img
+                                                src="{{$product->getFirstMediaUrl('logo')}}"
+                                                class="img-fluid card-img-top lazy" alt="...">
+                                        </div>
+                                        <div
+                                            class="card-body product-card-body-button d-flex justify-content-end align-items-center">
+                                            <a href="{{route('products.show', ['product_id' => $product->id])}}" class="text-decoration-none">İNCELE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        @endforeach
             </div>
-        </div>
+            </div>
+            @endif
+        @endforeach
+
     </section>
     <section class="homepage-who-we-are mt-5">
         <div class="container">
@@ -521,7 +292,7 @@
                         </div>
                     @endif
                     <div class="mt-4">
-                        <button type="button" class="px-4 py-2 btn btn-primary">İLETİŞİME GEÇ</button>
+                        <a class="px-4 py-2 btn btn-primary " href="{{route('contacts')}}">İLETİŞİME GEÇ</a>
                     </div>
                 </div>
             </div>
@@ -558,7 +329,7 @@
                 @endif
             </div>
             <div class="mt-5">
-                <button type="button" class="px-3 py-2 btn  btn-primary ">UZMAN İLE GÖRÜŞ</button>
+                <a class="px-3 py-2 btn btn-primary " href="{{route('contacts')}}">UZMAN İLE GÖRÜŞ</a>
             </div>
         </div>
     </section>
@@ -650,285 +421,76 @@
             </div>
         </div>
     </section>
-    <section class="homepage-tab-menu">
+    <section class="homepage-tab-menu mt-5">
         <nav>
             <div class="d-flex align-items-center justify-content-center">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active home-page-tab-menu-btn" id="nav-products-tab"
-                            data-bs-toggle="tab" data-bs-target="#nav-products"
-                            type="button" role="tab" aria-controls="nav-products" aria-selected="true">Tüm Ürünler
-                    </button>
-                    <button class="nav-link home-page-tab-menu-btn" id="nav-pv-systems-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-pv-systems"
-                            type="button" role="tab" aria-controls="nav-pv-systems" aria-selected="false">PV Sistemleri
-                    </button>
-                    <button class="nav-link home-page-tab-menu-btn" id="nav-su-water-heating-tab"
-                            data-bs-toggle="tab" data-bs-target="#nav-su-water-heating"
-                            type="button" role="tab" aria-controls="nav-su-water-heating" aria-selected="false">Güneş Su
-                        Isıtma
-                        Sistemleri
-                    </button>
+
+                    @foreach($galleries as $i =>$gallery)
+                        @if($i == 0)
+                        <button class="nav-link active home-page-tab-menu-btn" id="nav-su-water-heating-tab"
+                                data-bs-toggle="tab" data-bs-target="#{{$gallery->id}}"
+                                type="button" role="tab" aria-controls="nav-su-water-heating" aria-selected="false">{{$gallery->name}}
+                        </button>
+                        @else
+                            <button class="nav-link  home-page-tab-menu-btn" id="nav-su-water-heating-tab"
+                                    data-bs-toggle="tab" data-bs-target="#{{$gallery->id}}"
+                                    type="button" role="tab" aria-controls="nav-su-water-heating" aria-selected="false">{{$gallery->name}}
+                            </button>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-products" role="tabpanel"
-                 aria-labelledby="nav-products-tab"
-                 tabindex="0">
-                <div class="row g-0">
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img project-gallery-image-item mb-4">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
+
+            @foreach($galleries as $i=>$gallery)
+                @if($i == 0)
+                <div class="tab-pane fade show active" id="{{$gallery->id}}" role="tabpanel"
+                     aria-labelledby="nav-su-water-heating-tab" tabindex="0">
+
+                    <div class="row g-0">
+                        @foreach($gallery->media->take(8) as $media)
+                        <div class="col-lg-3 col-sm-12 col-md-6">
+                            <a href="{{$media->getUrl()}}"
+                               class="image-link-solar-heating">
+                                <div class="homepage-tab-menu-product-img">
+                                    <div class="homepage-tab-menu-product-icon-wrapper">
+                                        <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
+                                    </div>
+                                    <img src="{{$media->getUrl()}}"
+                                         alt="" class="w-100">
                                 </div>
-                                <img
-                                    data-src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                    alt="" class="w-100 img-fluid lazy">
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        @endforeach
                     </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link">
-                            <div class="homepage-tab-menu-product-img">
-                                <div class="homepage-tab-menu-product-icon-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
-                                </div>
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
-            </div>
-            <div class="tab-pane fade" id="nav-pv-systems" role="tabpanel" aria-labelledby="nav-pv-systems-tab"
-                 tabindex="0">
-                <div class="row g-0">
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
+                @else
+                    <div class="tab-pane fade" id="{{$gallery->id}}" role="tabpanel"
+                         aria-labelledby="nav-su-water-heating-tab" tabindex="0">
+
+                        <div class="row g-0">
+                            @foreach($gallery->media->take(8) as $media)
+                                <div class="col-lg-3 col-sm-12 col-md-6">
+                                    <a href="{{$media->getUrl()}}"
+                                       class="image-link-solar-heating">
+                                        <div class="homepage-tab-menu-product-img">
+                                            <div class="homepage-tab-menu-product-icon-wrapper">
+                                                <i class="fa-solid fa-magnifying-glass homepage-tab-menu-product-icon"></i>
+                                            </div>
+                                            <img src="{{$media->getUrl()}}"
+                                                 alt="" class="w-100">
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+
                     </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link-pv-systems">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="nav-su-water-heating" role="tabpanel"
-                 aria-labelledby="nav-su-water-heating-tab" tabindex="0">
-                <div class="row g-0">
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-4.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-3.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-2.jpg')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 col-md-6">
-                        <a href="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                           class="image-link-solar-heating">
-                            <div class="homepage-tab-menu-product-img">
-                                <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/product-1.png')}}"
-                                     alt="" class="w-100">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                @endif
+            @endforeach
         </div>
     </section>
     <section class="goals">
@@ -966,7 +528,7 @@
                         @endif
                         <div>
                             <div class="mt-4">
-                                <button type="button" class="px-4 py-2 btn btn-primary ">İLETİŞİME GEÇ</button>
+                                <a class="px-4 py-2 btn btn-primary " href="{{route('contacts')}}">İLETİŞİME GEÇ</a>
                             </div>
                         </div>
                     </div>
@@ -1077,42 +639,18 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
+                    @foreach($comments as $comment)
                     <div class="swiper-slide comments-swiper-slide">
                         <div class="comment-member-img">
-                            <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/avatar01.png')}}"
+                            <img src="{{$comment->getFirstMediaUrl('logo','thumb')}}"
                                  alt="avatarimg">
                         </div>
-                        <div class="comment-member-description my-5">Küçük bir evim var, çatısı için su ısıtma
-                            sistemlerini tercih ettim. Bu konuda Özay Tubular gerçekten bize çok yardımcı oldular.
-                            Teşekkürler.
+                        <div class="comment-member-description my-5">{!!  $comment->comment !!}
                         </div>
-                        <div class="comment-member-name"><h5>Sevim Yüksek</h5></div>
-                        <div class="comment-member-title">Ev Hanımı</div>
+                        <div class="comment-member-name"><h5>{{$comment->name}}</h5></div>
+                        <div class="comment-member-title">{{$comment->title}}</div>
                     </div>
-                    <div class="swiper-slide comments-swiper-slide">
-                        <div class="comment-member-img">
-                            <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/avatar.jpg')}}"
-                                 alt="avatarimg">
-                        </div>
-                        <div class="comment-member-description my-5">Küçük bir evim var, çatısı için su ısıtma
-                            sistemlerini tercih ettim. Bu konuda Özay Tubular gerçekten bize çok yardımcı oldular.
-                            Teşekkürler.
-                        </div>
-                        <div class="comment-member-name"><h5>Sevim Yüksek</h5></div>
-                        <div class="comment-member-title">Ev Hanımı</div>
-                    </div>
-                    <div class="swiper-slide comments-swiper-slide">
-                        <div class="comment-member-img">
-                            <img src="{{\Illuminate\Support\Facades\Vite::asset('resources/images/avatar01.png')}}"
-                                 alt="avatarimg">
-                        </div>
-                        <div class="comment-member-description my-5">Küçük bir evim var, çatısı için su ısıtma
-                            sistemlerini tercih ettim. Bu konuda Özay Tubular gerçekten bize çok yardımcı oldular.
-                            Teşekkürler.
-                        </div>
-                        <div class="comment-member-name"><h5>Sevim Yüksek</h5></div>
-                        <div class="comment-member-title">Ev Hanımı</div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-button-prev comments-swiper-btns"></div>
                 <div class="swiper-button-next comments-swiper-btns"></div>
