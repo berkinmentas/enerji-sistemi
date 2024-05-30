@@ -46,7 +46,7 @@ class ProductController extends Controller
         else {
             $products = $products->paginate(12);
         }
-// ProductCategory::query()->where('id')
+
         return view('products', [
             'products' => $products,
             'productCategoriesArray' => $productCategoriesArray,
