@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -18,22 +20,34 @@ class LoginController extends Controller
         return redirect()->route('admin.dashboard.index');
 
     }
-
     public function login(Request $request){
+        try{
+            $verifyGoogleRecaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
+                'response' => $request->input('g-recaptcha-response'),
+                'remoteIp' => $request->ip()
+            ]);
+            $googleRecaptchaResponse = $verifyGoogleRecaptcha->json();
+            if (isset($googleRecaptchaResponse['success']) && $googleRecaptchaResponse['success']) {
+                $credentials = $request->validate([
+                    'email' => ['required', 'email'],
+                    'password' => ['required'],
+                ]);
 
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+                if (Auth::attempt($credentials)) {
+                    $request->session()->regenerate();
+                    return redirect()->route('admin.dashboard.index');
+                }
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->route('admin.dashboard.index');
+                return back()->withErrors([
+                    'email' => 'The provided credentials do not match our records.',
+                ])->onlyInput('email');
+            }else{
+                throw new \Exception(__('Giriş Yapılamadı.'));
+            }
+        } catch (\Exception $exception) {
+            throw ValidationException::withMessages([$exception->getMessage()]);
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
     }
 }
